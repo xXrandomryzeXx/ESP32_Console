@@ -1,0 +1,31 @@
+[0;33m--- esp-idf-monitor 1.3.3 on /dev/ttyUSB0 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x4000c344: memcpy in ROM
+[0m
+[0;33m0x4000c46c: memset in ROM
+[0m
+[0;33m0x4000c477: memset in ROM
+[0m
+[0;33m0x4000c341: memcpy in ROM
+[0m
+[0;33m0x400dcc23: jpeg_decode_in_cb at /home/alexander/esp/learn_japanese/managed_components/espressif__esp_jpeg/jpeg_decoder.c:132
+[0m
+[0;33m0x40061009: jd_prepare in ROM
+[0m
+[0;33m0x400dccab: esp_jpeg_decode at /home/alexander/esp/learn_japanese/managed_components/espressif__esp_jpeg/jpeg_decoder.c:88
+[0m
+[0;33m0x400d67ac: decode_image_from_sd at /home/alexander/esp/learn_japanese/main/decode_image.c:126
+[0m
+[0;33m0x400d64c3: s_load_image at /home/alexander/esp/learn_japanese/main/memory.c:73
+[0m
+[0;33m0x400d66e8: init_background_image_from_sd at /home/alexander/esp/learn_japanese/main/display.c:32
+[0m
+[0;33m0x400d6043: app_main at /home/alexander/esp/learn_japanese/main/main.c:78
+[0m
+[0;33m0x400f62ec: main_task at /home/alexander/esp/esp-idf/components/freertos/app_startup.c:208
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[0m

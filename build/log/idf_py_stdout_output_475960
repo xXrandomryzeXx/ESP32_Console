@@ -1,0 +1,12 @@
+[0/1] cd /home/alexander/esp/learn_japanese/build && /usr/bin/cmake -D "IDF_SIZE_TOOL=/home/alexander/.espressif/python_env/idf5.2_py3.10_env/bin/python;-m;esp_idf_size" -D MAP_FILE=/home/alexander/esp/learn_japanese/build/spi_master.map -D OUTPUT_JSON= -P /home/alexander/esp/esp-idf/tools/cmake/run_size_tool.cmake
+Total sizes:
+Used static DRAM:   13148 bytes ( 167588 remain, 7.3% used)
+      .data size:   10468 bytes
+      .bss  size:    2680 bytes
+Used static IRAM:   59622 bytes (  71450 remain, 45.5% used)
+      .text size:   58595 bytes
+   .vectors size:    1027 bytes
+Used Flash size :  257751 bytes
+           .text:  157443 bytes
+         .rodata:  100052 bytes
+Total image size:  327841 bytes (.bin may be padded larger)

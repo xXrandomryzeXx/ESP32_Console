@@ -1,0 +1,35 @@
+[0;33m--- esp-idf-monitor 1.3.3 on /dev/ttyUSB0 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x40081712: panic_abort at /home/alexander/esp/esp-idf/components/esp_system/panic.c:472
+[0m
+[0;33m0x400869e1: esp_system_abort at /home/alexander/esp/esp-idf/components/esp_system/port/esp_system_chip.c:93
+[0m
+[0;33m0x4008d3a1: __assert_func at /home/alexander/esp/esp-idf/components/newlib/assert.c:81
+[0m
+[0;33m0x40087262: xQueueSemaphoreTake at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1763 (discriminator 1)
+[0m
+[0;33m0x400827e0: lock_acquire_generic at /home/alexander/esp/esp-idf/components/newlib/locks.c:146
+[0m
+[0;33m0x400828c9: _lock_acquire at /home/alexander/esp/esp-idf/components/newlib/locks.c:154
+[0m
+[0;33m0x400d46d9: esp_vfs_unregister_with_id at /home/alexander/esp/esp-idf/components/vfs/vfs.c:186
+[0m
+[0;33m0x400d4763: esp_vfs_unregister at /home/alexander/esp/esp-idf/components/vfs/vfs.c:208
+[0m
+[0;33m0x400da70b: esp_vfs_fat_unregister_path at /home/alexander/esp/esp-idf/components/fatfs/vfs/vfs_fat.c:196
+[0m
+[0;33m0x400d6a1f: unmount_card_core at /home/alexander/esp/esp-idf/components/fatfs/vfs/vfs_fat_sdmmc.c:422
+[0m
+[0;33m0x400d6be5: esp_vfs_fat_sdcard_unmount at /home/alexander/esp/esp-idf/components/fatfs/vfs/vfs_fat_sdmmc.c:445
+[0m
+[0;33m0x400d6594: sd_unmount at /home/alexander/esp/learn_japanese/main/memory.c:200
+[0m
+[0;33m0x400d606e: app_main at /home/alexander/esp/learn_japanese/main/main.c:86
+[0m
+[0;33m0x400f628c: main_task at /home/alexander/esp/esp-idf/components/freertos/app_startup.c:208
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[0m

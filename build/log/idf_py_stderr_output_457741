@@ -1,0 +1,55 @@
+[0;33m--- esp-idf-monitor 1.3.3 on /dev/ttyUSB0 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400e20fe: find_entry_from_task_handle_and_check_all_reset at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:152
+[0m
+[0;33m0x400e20fb: find_entry_from_task_handle_and_check_all_reset at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:152
+[0m
+[0;33m0x400e26c9: esp_task_wdt_reset at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:733
+[0m
+[0;33m0x400e2717: idle_hook_cb at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:441
+[0m
+[0;33m0x400d29e5: esp_vApplicationIdleHook at /home/alexander/esp/esp-idf/components/esp_system/freertos_hooks.c:47 (discriminator 1)
+[0m
+[0;33m0x40088146: prvIdleTask at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/tasks.c:4257 (discriminator 1)
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[1;31mNone[0m
+[0;33mWaiting for the device to reconnect[0mException in thread Thread-2 (_run_outer):
+Traceback (most recent call last):
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 76, in run
+    data = self.serial.read(self.serial.in_waiting or 1)
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/serial/serialposix.py", line 595, in read
+    raise SerialException(
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 83, in run
+    self.close_serial()
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 104, in close_serial
+    self._disable_closing_wait_or_discard_data()
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 120, in _disable_closing_wait_or_discard_data
+    buf = fcntl.ioctl(self.serial.fd, termios.TIOCGSERIAL, buf)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/stoppable_thread.py", line 47, in _run_outer
+    self.run()
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 100, in run
+    self.close_serial()
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 104, in close_serial
+    self._disable_closing_wait_or_discard_data()
+  File "/home/alexander/.espressif/python_env/idf5.2_py3.10_env/lib/python3.10/site-packages/esp_idf_monitor/base/serial_reader.py", line 120, in _disable_closing_wait_or_discard_data
+    buf = fcntl.ioctl(self.serial.fd, termios.TIOCGSERIAL, buf)
+OSError: [Errno 5] Input/output error
+[0m

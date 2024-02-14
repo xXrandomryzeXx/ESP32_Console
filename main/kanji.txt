@@ -1,0 +1,60 @@
+[
+日
+On ニチ,ジツ
+Ku ひ,び,か
+Me day,sun,Japan,counter_for_days
+]
+[
+一
+On イチ
+Ku ひと(つ)
+Me one
+]
+[
+国
+On コク
+Ku くに
+Me country
+]
+[
+人
+On ジン,ニン
+Ku ひと
+Me person
+]
+[
+年
+On ネン
+Ku とし
+Me year,counter_for_years
+]
+[
+大
+On ダイ,タイ
+Ku おお(きい)
+Me large,big
+]
+[
+十
+On ジュウ
+Ku とお,と
+Me ten
+]
+[
+二
+On ニ,ジ
+Ku ふた(つ)
+Me two
+]
+[
+本
+On ホン
+Ku もと
+Me book,present,true,countrer_for_long_cylindrical_things
+]
+[
+中
+On チュウ
+Ku なか,うち,あた(る)
+Me in,inside,middle,mean,center
+]

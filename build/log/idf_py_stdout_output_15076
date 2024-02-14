@@ -1,0 +1,116 @@
+0b0d0h ( 4526�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7140
+load:0x40078000,len:15500
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (29) boot: ESP-IDF v5.2-dev-3775-gb4268c874a 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Feb 10 2024 10:06:19[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.0[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=19eech (106220) map[0m
+[0;32mI (141) esp_image: segment 1: paddr=00029f14 vaddr=3ffb0000 size=028e4h ( 10468) load[0m
+[0;32mI (145) esp_image: segment 2: paddr=0002c800 vaddr=40080000 size=03818h ( 14360) load[0m
+[0;32mI (152) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=26b58h (158552) map[0m
+[0;32mI (209) esp_image: segment 4: paddr=00056b80 vaddr=40083818 size=0b0d0h ( 45264) load[0m
+[0;32mI (234) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (235) boot: Disabling RNG early entropy source...[0m
+[0;32mI (246) cpu_start: Multicore app[0m
+[0;32mI (255) cpu_start: Pro cpu start user code[0m
+[0;32mI (255) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (255) cpu_start: Application information:[0m
+[0;32mI (258) cpu_start: Project name:     spi_master[0m
+[0;32mI (263) cpu_start: App version:      1[0m
+[0;32mI (267) cpu_start: Compile time:     Feb 10 2024 10:06:15[0m
+[0;32mI (274) cpu_start: ELF file SHA256:  d3a06f1ec...[0m
+[0;32mI (279) cpu_start: ESP-IDF:          v5.2-dev-3775-gb4268c874a[0m
+[0;32mI (285) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (290) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (295) cpu_start: Chip rev:         v3.0[0m
+[0;32mI (300) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (307) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (313) heap_init: At 3FFB3360 len 0002CCA0 (179 KiB): DRAM[0m
+[0;32mI (319) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (326) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (332) heap_init: At 4008E8E8 len 00011718 (69 KiB): IRAM[0m
+[0;32mI (340) spi_flash: detected chip: generic[0m
+[0;32mI (343) spi_flash: flash io: dio[0m
+[0;32mI (347) main_task: Started on CPU0[0m
+[0;32mI (357) main_task: Calling app_main()[0m
+Free heap memory at start: 298684
+Largest free memory block: 163840
+Return of jd_prepare(): 0
+[0;32mI (587) ImageDec: JPEG image decoded; Size 320px x 240px[0m
+Used memory for graphics: 153604
+[0;32mI (587) sd_card: Initializing SD card[0m
+[0;32mI (587) sd_card: Using SPI peripheral[0m
+[0;32mI (587) sd_card: Mounting filesystem[0m
+[0;32mI (597) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (607) sdspi_transaction: cmd=52, R1 response: command not supported[0m
+[0;32mI (657) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (697) sd_card: Filesystem mounted[0m
+Used memory for spi_init: 183260
+[0;32mI (697) gpio: GPIO[0]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (697) gpio: GPIO[4]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (707) gpio: GPIO[22]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1117) gpio: GPIO[34]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1117) gpio: GPIO[35]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1117) gpio: GPIO[36]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1127) gpio: GPIO[39]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+Name: SU08G
+Type: SDHC/SDXC
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 7580MB
+CSD: ver=2, sector_size=512, capacity=15523840 read_bl_len=9
+SSR: bus_width=1
+Loading background image from SD card
+[0;32mI (1157) sd_card: Opening image /sdcard/bckg2.jpg[0m
+[0;32mI (1167) sd_card: Image opened[0m
+[0;32mI (1257) sd_card: Decoding image[0m
+Memory of pixels: 0x3ffb3068
+Memory of image_start: 0x3ffeafe8
+Return of jd_prepare(): 0
+JPEG DECODED
+Used memory for sd_init: 51228
+Total free memory: 64196
+[0;32mI (1467) gpio: GPIO[15]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1467) sd_card: Card unmounted[0m
+Used heap memory: 205908
+Free memory: 92776
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 4 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
+Button 2 is on
