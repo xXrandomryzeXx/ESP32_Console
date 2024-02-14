@@ -8,6 +8,7 @@
 #include "display.h"
 #include "button.h"
 #include "memory.h"
+#include "text.h"
 
 spi_device_handle_t lcd_spi;
 spi_device_handle_t sd_spi;
@@ -88,6 +89,8 @@ void app_main(void)
     printf("Used heap memory: %d\n", starting_memory - heap_caps_get_free_size(MALLOC_CAP_8BIT));
 
     printf("Free memory: %d\n", heap_caps_get_free_size(MALLOC_CAP_8BIT));
+
+    uint8_t hello_text = create_text(50, 50, "Hello World", 11);
     
     display_screen(lcd_spi);
 }

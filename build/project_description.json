@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "spi_master",
-    "project_version":    "1",
+    "project_version":    "dc72b70-dirty",
     "project_path":       "/home/alexander/esp/learn_japanese",
     "idf_path":           "/home/alexander/esp/esp-idf",
     "build_dir":          "/home/alexander/esp/learn_japanese/build",
@@ -820,7 +820,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__esp_jpeg" ],
             "file": "/home/alexander/esp/learn_japanese/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/alexander/esp/learn_japanese/main/display.c", "/home/alexander/esp/learn_japanese/main/main.c", "/home/alexander/esp/learn_japanese/main/lcd.c", "/home/alexander/esp/learn_japanese/main/decode_image.c", "/home/alexander/esp/learn_japanese/main/button.c", "/home/alexander/esp/learn_japanese/main/memory.c", "/home/alexander/esp/learn_japanese/main/spi.c", "/home/alexander/esp/learn_japanese/build/background.jpg.S" ],
+            "sources": [ "/home/alexander/esp/learn_japanese/main/display.c", "/home/alexander/esp/learn_japanese/main/main.c", "/home/alexander/esp/learn_japanese/main/lcd.c", "/home/alexander/esp/learn_japanese/main/decode_image.c", "/home/alexander/esp/learn_japanese/main/button.c", "/home/alexander/esp/learn_japanese/main/memory.c", "/home/alexander/esp/learn_japanese/main/spi.c", "/home/alexander/esp/learn_japanese/main/text.c", "/home/alexander/esp/learn_japanese/build/background.jpg.S" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {

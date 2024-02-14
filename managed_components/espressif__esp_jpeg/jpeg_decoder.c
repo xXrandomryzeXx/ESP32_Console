@@ -86,7 +86,6 @@ esp_err_t esp_jpeg_decode(esp_jpeg_image_cfg_t *cfg, esp_jpeg_image_output_t *im
 
     /* Prepare image */
     res = jd_prepare(&JDEC, jpeg_decode_in_cb, workbuf, JPEG_WORK_BUF_SIZE, cfg);
-    printf("Return of jd_prepare(): %d\n", res);
     ESP_GOTO_ON_FALSE((res == JDR_OK), ESP_FAIL, err, TAG, "Error in preparing JPEG image!");
 
     uint8_t scale_div = jpeg_get_div_by_scale(cfg->out_scale);

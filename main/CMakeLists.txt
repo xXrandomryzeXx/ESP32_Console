@@ -5,6 +5,7 @@ set(srcs "display.c"
     "button.c"
     "memory.c"
     "spi.c"
+    "text.c"
     )
 
 idf_component_register(SRCS ${srcs}
