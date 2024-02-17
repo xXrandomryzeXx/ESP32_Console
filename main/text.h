@@ -26,8 +26,8 @@ struct ui_string{
  * @return      -  -1 Failed to allocate memory or there is no space in the array
  *              -  index Successfully  created text
  */
-uint8_t create_text(uint8_t x, uint8_t y, char *text, uint8_t len);
-
+uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
+uint8_t create_japanese_text(uint16_t x, uint8_t y, uint8_t *codes, uint8_t len);
 /*
  * @brief Set the color variable of a string with a given id/index
  *
@@ -38,6 +38,7 @@ uint8_t create_text(uint8_t x, uint8_t y, char *text, uint8_t len);
  *              -  1 Color has been successfully set
  */
 uint8_t set_text_color(uint16_t color, uint8_t id);
+uint8_t set_japanese_text_color(uint16_t color, uint8_t id);
 
 /*
  * @breif Get a pixel value, if there should be a text pixel drawn or not, at given (x,y) coordinate
@@ -50,4 +51,5 @@ uint8_t set_text_color(uint16_t color, uint8_t id);
  *              - 0xffff A "draw" pixel, draw pixel with the strings[id].color color
  *
  */
-uint16_t get_text_pixel(uint8_t x, uint8_t y, uint8_t id);
+uint16_t get_text_pixel(uint16_t x, uint8_t y, uint8_t id);
+uint16_t get_japanese_text_pixel(uint16_t x, uint8_t y, uint8_t id);

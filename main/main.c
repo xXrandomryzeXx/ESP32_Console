@@ -91,6 +91,10 @@ void app_main(void)
     printf("Free memory: %d\n", heap_caps_get_free_size(MALLOC_CAP_8BIT));
 
     uint8_t hello_text = create_text(50, 50, "Hello World", 11);
+    uint8_t arr[9] = {20, 84, 44, 34, 48, 95, 28, 12, 5};
+    //uint8_t arr[5] = {0, 0, 0, 0, 0};
+    //uint8_t arr[1] = {82, 83};
+    uint8_t hello_japanese_text = create_japanese_text(50, 100, arr,  9);
     
     display_screen(lcd_spi);
 }

@@ -1,0 +1,89 @@
+[0;33m--- esp-idf-monitor 1.3.3 on /dev/ttyUSB0 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400e2747: task_wdt_timeout_handling at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:414
+[0m
+[0;33m0x400e28ce: task_wdt_isr at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:536
+[0m
+[0;33m0x400830e9: _xt_lowint1 at /home/alexander/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+[0m
+[0;33m0x4000bfed: _xtos_set_intlevel in ROM
+[0m
+[0;33m0x40087817: vPortClearInterruptMaskFromISR at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:564
+ (inlined by) vPortExitCritical at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:507
+[0m
+[0;33m0x40082464: vPortExitCriticalSafe at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:600
+ (inlined by) esp_intr_enable at /home/alexander/esp/esp-idf/components/esp_hw_support/intr_alloc.c:812
+[0m
+[0;33m0x400839a1: spi_bus_intr_enable at /home/alexander/esp/esp-idf/components/driver/spi/gpspi/spi_master.c:591
+[0m
+[0;33m0x400f5856: bg_enable at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:324
+ (inlined by) req_core at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:350
+[0m
+[0;33m0x400e1f5d: spi_bus_lock_bg_request at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:763
+[0m
+[0;33m0x400e05a2: spi_device_queue_trans at /home/alexander/esp/esp-idf/components/driver/spi/gpspi/spi_master.c:973
+[0m
+[0;33m0x400d62b8: send_lines at /home/alexander/esp/learn_japanese/main/lcd.c:234
+[0m
+[0;33m0x400d634c: display_screen at /home/alexander/esp/learn_japanese/main/lcd.c:287
+[0m
+[0;33m0x400d60e1: app_main at /home/alexander/esp/learn_japanese/main/main.c:97
+[0m
+[0;33m0x400f6648: main_task at /home/alexander/esp/esp-idf/components/freertos/app_startup.c:208
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[0;33m0x400e2747: task_wdt_timeout_handling at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:414
+[0m
+[0;33m0x400e28ce: task_wdt_isr at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:536
+[0m
+[0;33m0x400830e9: _xt_lowint1 at /home/alexander/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+[0m
+[0;33m0x400d67f0: get_text_pixel at /home/alexander/esp/learn_japanese/main/text.c:102
+[0m
+[0;33m0x400d68e5: get_screen_lines at /home/alexander/esp/learn_japanese/main/display.c:29
+[0m
+[0;33m0x400d6335: display_screen at /home/alexander/esp/learn_japanese/main/lcd.c:275
+[0m
+[0;33m0x400d60e1: app_main at /home/alexander/esp/learn_japanese/main/main.c:97
+[0m
+[0;33m0x400f6648: main_task at /home/alexander/esp/esp-idf/components/freertos/app_startup.c:208
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[0;33m0x400e2747: task_wdt_timeout_handling at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:414
+[0m
+[0;33m0x400e28ce: task_wdt_isr at /home/alexander/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:536
+[0m
+[0;33m0x400830e9: _xt_lowint1 at /home/alexander/esp/esp-idf/components/xtensa/xtensa_vectors.S:1240
+[0m
+[0;33m0x4000bfed: _xtos_set_intlevel in ROM
+[0m
+[0;33m0x40087817: vPortClearInterruptMaskFromISR at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:564
+ (inlined by) vPortExitCritical at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:507
+[0m
+[0;33m0x40082464: vPortExitCriticalSafe at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:600
+ (inlined by) esp_intr_enable at /home/alexander/esp/esp-idf/components/esp_hw_support/intr_alloc.c:812
+[0m
+[0;33m0x400839a1: spi_bus_intr_enable at /home/alexander/esp/esp-idf/components/driver/spi/gpspi/spi_master.c:591
+[0m
+[0;33m0x400f5856: bg_enable at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:324
+ (inlined by) req_core at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:350
+[0m
+[0;33m0x400e1f5d: spi_bus_lock_bg_request at /home/alexander/esp/esp-idf/components/driver/spi/spi_bus_lock.c:763
+[0m
+[0;33m0x400e05a2: spi_device_queue_trans at /home/alexander/esp/esp-idf/components/driver/spi/gpspi/spi_master.c:973
+[0m
+[0;33m0x400d62b8: send_lines at /home/alexander/esp/learn_japanese/main/lcd.c:234
+[0m
+[0;33m0x400d634c: display_screen at /home/alexander/esp/learn_japanese/main/lcd.c:287
+[0m
+[0;33m0x400d60e1: app_main at /home/alexander/esp/learn_japanese/main/main.c:97
+[0m
+[0;33m0x400f6648: main_task at /home/alexander/esp/esp-idf/components/freertos/app_startup.c:208
+[0m
+[0;33m0x40087475: vPortTaskWrapper at /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:137
+[0m
+[0m

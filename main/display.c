@@ -8,6 +8,7 @@
 uint16_t *pixels;
 
 extern struct ui_string strings[10];
+extern struct ui_string japanese_strings[10];
 
 static inline uint16_t get_background_pixel(int x, int y)
 {
@@ -20,8 +21,8 @@ void get_screen_lines(uint16_t *dest, int line, int n)
         // Draw background
         for(int x = 0; x < 320; x++) {
             *dest++ = get_background_pixel(x, y);
-            // Draw text
-            for(int i = 0; i < 10; i++){
+            // Draw english text
+            for(int i = 0; i < 3; i++){
                 if(strings[i].len > 0){
                     if(y >= strings[i].y && y < strings[i].y + 16 &&
                        x >= strings[i].x && x < strings[i].x + strings[i].len * 8) {
@@ -32,8 +33,24 @@ void get_screen_lines(uint16_t *dest, int line, int n)
                     }
                 }
             }
-        }
 
+            // Draw japanese text
+            for(int i = 0; i < 3; i++){
+                if(japanese_strings[i].len > 0){
+                    if(y >= japanese_strings[i].y &&
+                       y < japanese_strings[i].y + 16 &&
+                       x >= japanese_strings[i].x &&
+                       x < japanese_strings[i].x + japanese_strings[i].len * 16){
+                        uint16_t ret = get_japanese_text_pixel(x - japanese_strings[i].x,
+                                                               y - japanese_strings[i].y, i);
+                        if(ret){
+                            *(dest-1) = (japanese_strings[i].color)? japanese_strings[i].color : ret;
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }
 
