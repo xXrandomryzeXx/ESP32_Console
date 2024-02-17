@@ -19,4 +19,7 @@ typedef enum {
 void lcd_spi_pre_transfer_callback(spi_transaction_t *t);
 void lcd_init(spi_device_handle_t spi);
 
-void display_screen(spi_device_handle_t spi);
+//void display_screen(spi_device_handle_t spi);
+
+void display_lcd_prepare();
+void display_lcd_screen(spi_device_handle_t spi);

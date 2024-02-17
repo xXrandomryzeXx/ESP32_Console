@@ -72,6 +72,11 @@ DRAM_ATTR static const lcd_init_cmd_t ili_init_cmds[] = {
     {0, {0}, 0xff},
 };
 
+uint16_t *lines[2];
+int frame;
+int sending_line;
+int calc_line;
+
 /* Send a command to the LCD. Uses spi_device_polling_transmit, which wiats
  * until the transfer is complete.
  *
@@ -255,47 +260,50 @@ void send_line_finish(spi_device_handle_t spi)
     }
 }
 
-void display_screen(spi_device_handle_t spi)
+
+void display_lcd_prepare()
 {
-    uint16_t *lines[2];
+    //uint16_t *lines[2];
     // Allocate memory for the pixel buffers
     for (int i = 0; i < 2; i++) {
         lines[i] = heap_caps_malloc(320 * PARALLEL_LINES * sizeof(uint16_t), MALLOC_CAP_DMA);
         assert(lines[i] != NULL);
     }
-    int frame = 0;
+    frame = 0;
     // Indexes of the line currently being sent to the LCD and the line we're calculating.
-    int sending_line = -1;
-    int calc_line = 0;
+    sending_line = -1;
+    calc_line = 0;
 
-    while(1) {
-        frame++;
-        for(int y = 0; y < 240; y += PARALLEL_LINES) {
-            // Calculate a line
-            get_screen_lines(lines[calc_line], y, PARALLEL_LINES);
+}
 
-            // Finish up the sending process of the previous line, if any
-            if (sending_line != -1) {
-                send_line_finish(spi);
-            }
+void display_lcd_screen(spi_device_handle_t spi)
+{
+frame++;
+for(int y = 0; y < 240; y += PARALLEL_LINES) {
+    // Calculate a line
+    get_screen_lines(lines[calc_line], y, PARALLEL_LINES);
 
-            // Swap sendinng_line and calc_line
-            sending_line = calc_line;
-            calc_line = (calc_line == 1) ? 0 : 1;
-
-            // Send the line we currently calculated
-            send_lines(spi, y, lines[sending_line]);
-            // The line set is queued up for sending now; the actual sending happens in the
-            // background. We can go on to calculate the next line set as long as we do not
-            // touch line[sending_line]; the SPI sending proces is still reading from that.
-        }
-        if(get_button_state(0))
-            printf("Button 1 is on\n");
-        if(get_button_state(1))
-            printf("Button 2 is on\n");
-        if(get_button_state(2))
-            printf("Button 3 is on\n");
-        if(get_button_state(3))
-            printf("Button 4 is on\n");
+    // Finish up the sending process of the previous line, if any
+    if (sending_line != -1) {
+        send_line_finish(spi);
     }
+
+    // Swap sendinng_line and calc_line
+    sending_line = calc_line;
+    calc_line = (calc_line == 1) ? 0 : 1;
+
+    // Send the line we currently calculated
+    send_lines(spi, y, lines[sending_line]);
+    // The line set is queued up for sending now; the actual sending happens in the
+    // background. We can go on to calculate the next line set as long as we do not
+    // touch line[sending_line]; the SPI sending proces is still reading from that.
+}
+/*if(get_button_state(0))
+    printf("Button 1 is on\n");
+if(get_button_state(1))
+    printf("Button 2 is on\n");
+if(get_button_state(2))
+    printf("Button 3 is on\n");
+if(get_button_state(3))
+    printf("Button 4 is on\n");*/
 }
