@@ -62,7 +62,7 @@ esp_err_t init_background_image(void)
     return ESP_OK;*/
 }
 
-esp_err_t init_background_image_from_sd(void)
+esp_err_t init_background_image_from_sd(char* path)
 {
-    return s_load_image("/sdcard/bckg2.jpg", &pixels);
+    return s_load_image(path, &pixels);
 }

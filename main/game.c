@@ -13,10 +13,21 @@
 #include "memory.h"
 #include "text.h"
 
+#include "state_machine.h"
+
 spi_device_handle_t lcd_spi;
 spi_device_handle_t sd_spi;
 
+/*
+ * 0 -> game loop won't run
+ * 1 -> game loop will run
+ */
+static uint8_t game;
+
 void Start(){
+    // Just in case, set state to Null
+    setState(Null);
+
     // Setup
     game = 1;
 
@@ -39,27 +50,33 @@ void Start(){
     // Setup the button's GPIO
     buttons_init();
 
-    ret = init_background_image_from_sd();
-    ESP_ERROR_CHECK(ret);
+    //ret = init_background_image_from_sd();
+    //ESP_ERROR_CHECK(ret);
    
     // Unmount SD for safe turn off
-    sd_unmount(); 
+    //sd_unmount(); 
 
     // Create a test text in english
-    uint8_t hello_text = create_text(50, 50, "Hello World", 11);
+    //uint8_t hello_text = create_text(50, 50, "Hello World", 11);
 
 
     // Create a test text in japanese (hiragana)
-    uint8_t arr[9] = {20, 84, 44, 34, 48, 95, 28, 12, 5};
-    uint8_t japanese_text = create_japanese_text(50, 100, arr, 9);
+    //uint8_t arr[9] = {20, 184, 44, 134, 48, 95, 128, 12, 105};
+    //uint8_t japanese_text = create_japanese_text(50, 100, arr, 9);
     
     // Prepare the LCD for graphics input 
     display_lcd_prepare();
 
+    // After the initial setup, state can be set to the main menu
+    setState(MainMenu);
+    input_handled = 1;
     // Basic game loop
     while(game){
-        Update();
+        if(input_handled){
+            Update();
+        }
         Render();
+        Input();
     }
     
 }

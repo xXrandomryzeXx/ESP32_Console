@@ -46,7 +46,7 @@ static esp_err_t s_read_file(const char *path)
     return ESP_OK;
 }
 
-esp_err_t s_load_image(const char *path, uint16_t **pixels)
+esp_err_t s_load_image(char *path, uint16_t **pixels)
 {
     ESP_LOGI(TAG, "Opening image %s", path);
     FILE *img = fopen(path, "rb");

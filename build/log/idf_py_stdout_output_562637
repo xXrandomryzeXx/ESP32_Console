@@ -1,0 +1,53 @@
+[1/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/update.c.obj
+[2/14] Performing build step for 'bootloader'
+[1/1] cd /home/alexander/esp/learn_japanese/build/bootloader/esp-idf/esptool_py && /home/alexander/.espressif/python_env/idf5.2_py3.10_env/bin/python /home/alexander/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/alexander/esp/learn_japanese/build/bootloader/bootloader.bin
+Bootloader binary size 0x6810 bytes. 0x7f0 bytes (7%) free.
+[3/14] No install step for 'bootloader'
+[4/14] Completed 'bootloader'
+[5/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/text.c.obj
+/home/alexander/esp/learn_japanese/main/text.c: In function 'create_japanese_text':
+/home/alexander/esp/learn_japanese/main/text.c:67:31: warning: multi-character character constant [-Wmultichar]
+   67 |     printf("こ -> %d\n", (int)'こ');
+      |                               ^~~~
+/home/alexander/esp/learn_japanese/main/text.c:68:31: warning: multi-character character constant [-Wmultichar]
+   68 |     printf("ん -> %d\n", (int)'ん');
+      |                               ^~~~
+/home/alexander/esp/learn_japanese/main/text.c:69:31: warning: multi-character character constant [-Wmultichar]
+   69 |     printf("に -> %d\n", (int)'に');
+      |                               ^~~~
+/home/alexander/esp/learn_japanese/main/text.c:70:31: warning: multi-character character constant [-Wmultichar]
+   70 |     printf("ち -> %d\n", (int)'ち');
+      |                               ^~~~
+/home/alexander/esp/learn_japanese/main/text.c:71:31: warning: multi-character character constant [-Wmultichar]
+   71 |     printf("は -> %d\n", (int)'は');
+      |                               ^~~~
+[6/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/display.c.obj
+[7/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/game.c.obj
+In file included from /home/alexander/esp/learn_japanese/main/game.c:6:
+/home/alexander/esp/learn_japanese/main/game.h:10:16: warning: 'menu_selection' defined but not used [-Wunused-variable]
+   10 | static uint8_t menu_selection;
+      |                ^~~~~~~~~~~~~~
+[8/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/spi.c.obj
+[9/14] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/memory.c.obj
+/home/alexander/esp/learn_japanese/main/memory.c: In function 'sd_init':
+/home/alexander/esp/learn_japanese/main/memory.c:112:15: warning: unused variable 'ret' [-Wunused-variable]
+  112 |     esp_err_t ret;
+      |               ^~~
+/home/alexander/esp/learn_japanese/main/memory.c: At top level:
+/home/alexander/esp/learn_japanese/main/memory.c:27:18: warning: 's_read_file' defined but not used [-Wunused-function]
+   27 | static esp_err_t s_read_file(const char *path)
+      |                  ^~~~~~~~~~~
+/home/alexander/esp/learn_japanese/main/memory.c:12:18: warning: 's_write_file' defined but not used [-Wunused-function]
+   12 | static esp_err_t s_write_file(const char *path, char *data)
+      |                  ^~~~~~~~~~~~
+[10/14] Linking C static library esp-idf/main/libmain.a
+[11/14] Generating ld/sections.ld
+[12/14] Linking CXX executable spi_master.elf
+[13/14] Generating binary image from built executable
+esptool.py v4.7.dev2
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/alexander/esp/learn_japanese/build/spi_master.bin
+[14/14] cd /home/alexander/esp/learn_japanese/build/esp-idf/esptool_py && /home/alexander/.espressif/python_env/idf5.2_py3.10_env/bin/python /home/alexander/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/alexander/esp/learn_japanese/build/partition_table/partition-table.bin /home/alexander/esp/learn_japanese/build/spi_master.bin
+spi_master.bin binary size 0x50880 bytes. Smallest app partition is 0x100000 bytes. 0xaf780 bytes (69%) free.

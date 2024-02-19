@@ -9,6 +9,8 @@ set(srcs "display.c"
     "game.c"
     "update.c"
     "render.c"
+    "state_machine.c"
+    "input.c"
     )
 
 idf_component_register(SRCS ${srcs}

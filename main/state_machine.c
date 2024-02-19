@@ -1,9 +1,12 @@
 #include "state_machine.h"
 
-STATE currentState = STATE.Null;
+#include <stdio.h>
+
+STATE currentState = Null;
 
 void setState(STATE newState)
 {
+    printf("Switching current State: %d to State: %d\n", currentState, newState);
     currentState = newState;
 }
 

@@ -1,0 +1,475 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/alexander/esp/learn_japanese/build/bootloader/esp-idf/esptool_py && /home/alexander/.espressif/python_env/idf5.2_py3.10_env/bin/python /home/alexander/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/alexander/esp/learn_japanese/build/bootloader/bootloader.bin
+Bootloader binary size 0x6810 bytes. 0x7f0 bytes (7%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/input.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/input.c.obj 
+/home/alexander/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.2-dev-3775-gb4268c874a\" -DMBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -DUNITY_INCLUDE_CONFIG_H -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/alexander/esp/learn_japanese/build/config -I/home/alexander/esp/learn_japanese/main -I/home/alexander/esp/esp-idf/components/newlib/platform_include -I/home/alexander/esp/esp-idf/components/freertos/config/include -I/home/alexander/esp/esp-idf/components/freertos/config/include/freertos -I/home/alexander/esp/esp-idf/components/freertos/config/xtensa/include -I/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/home/alexander/esp/esp-idf/components/freertos/esp_additions/include -I/home/alexander/esp/esp-idf/components/esp_hw_support/include -I/home/alexander/esp/esp-idf/components/esp_hw_support/include/soc -I/home/alexander/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/alexander/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/home/alexander/esp/esp-idf/components/esp_hw_support/port/esp32/private_include -I/home/alexander/esp/esp-idf/components/heap/include -I/home/alexander/esp/esp-idf/components/log/include -I/home/alexander/esp/esp-idf/components/soc/include -I/home/alexander/esp/esp-idf/components/soc/esp32 -I/home/alexander/esp/esp-idf/components/soc/esp32/include -I/home/alexander/esp/esp-idf/components/hal/platform_port/include -I/home/alexander/esp/esp-idf/components/hal/esp32/include -I/home/alexander/esp/esp-idf/components/hal/include -I/home/alexander/esp/esp-idf/components/esp_rom/include -I/home/alexander/esp/esp-idf/components/esp_rom/include/esp32 -I/home/alexander/esp/esp-idf/components/esp_rom/esp32 -I/home/alexander/esp/esp-idf/components/esp_common/include -I/home/alexander/esp/esp-idf/components/esp_system/include -I/home/alexander/esp/esp-idf/components/esp_system/port/soc -I/home/alexander/esp/esp-idf/components/esp_system/port/include/private -I/home/alexander/esp/esp-idf/components/xtensa/esp32/include -I/home/alexander/esp/esp-idf/components/xtensa/include -I/home/alexander/esp/esp-idf/components/xtensa/deprecated_include -I/home/alexander/esp/esp-idf/components/lwip/include -I/home/alexander/esp/esp-idf/components/lwip/include/apps -I/home/alexander/esp/esp-idf/components/lwip/include/apps/sntp -I/home/alexander/esp/esp-idf/components/lwip/lwip/src/include -I/home/alexander/esp/esp-idf/components/lwip/port/include -I/home/alexander/esp/esp-idf/components/lwip/port/freertos/include -I/home/alexander/esp/esp-idf/components/lwip/port/esp32xx/include -I/home/alexander/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/home/alexander/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/home/alexander/esp/learn_japanese/managed_components/espressif__esp_jpeg/include -I/home/alexander/esp/esp-idf/components/esp_ringbuf/include -I/home/alexander/esp/esp-idf/components/efuse/include -I/home/alexander/esp/esp-idf/components/efuse/esp32/include -I/home/alexander/esp/esp-idf/components/esp_mm/include -I/home/alexander/esp/esp-idf/components/driver/include -I/home/alexander/esp/esp-idf/components/driver/deprecated -I/home/alexander/esp/esp-idf/components/driver/analog_comparator/include -I/home/alexander/esp/esp-idf/components/driver/dac/include -I/home/alexander/esp/esp-idf/components/driver/gpio/include -I/home/alexander/esp/esp-idf/components/driver/gptimer/include -I/home/alexander/esp/esp-idf/components/driver/i2c/include -I/home/alexander/esp/esp-idf/components/driver/i2s/include -I/home/alexander/esp/esp-idf/components/driver/ledc/include -I/home/alexander/esp/esp-idf/components/driver/mcpwm/include -I/home/alexander/esp/esp-idf/components/driver/parlio/include -I/home/alexander/esp/esp-idf/components/driver/pcnt/include -I/home/alexander/esp/esp-idf/components/driver/rmt/include -I/home/alexander/esp/esp-idf/components/driver/sdio_slave/include -I/home/alexander/esp/esp-idf/components/driver/sdmmc/include -I/home/alexander/esp/esp-idf/components/driver/sigma_delta/include -I/home/alexander/esp/esp-idf/components/driver/spi/include -I/home/alexander/esp/esp-idf/components/driver/temperature_sensor/include -I/home/alexander/esp/esp-idf/components/driver/touch_sensor/include -I/home/alexander/esp/esp-idf/components/driver/twai/include -I/home/alexander/esp/esp-idf/components/driver/uart/include -I/home/alexander/esp/esp-idf/components/driver/usb_serial_jtag/include -I/home/alexander/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/home/alexander/esp/esp-idf/components/esp_pm/include -I/home/alexander/esp/esp-idf/components/mbedtls/port/include -I/home/alexander/esp/esp-idf/components/mbedtls/mbedtls/include -I/home/alexander/esp/esp-idf/components/mbedtls/mbedtls/library -I/home/alexander/esp/esp-idf/components/mbedtls/esp_crt_bundle/include -I/home/alexander/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/everest/include -I/home/alexander/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m -I/home/alexander/esp/esp-idf/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m -I/home/alexander/esp/esp-idf/components/esp_bootloader_format/include -I/home/alexander/esp/esp-idf/components/esp_app_format/include -I/home/alexander/esp/esp-idf/components/bootloader_support/include -I/home/alexander/esp/esp-idf/components/bootloader_support/bootloader_flash/include -I/home/alexander/esp/esp-idf/components/esp_partition/include -I/home/alexander/esp/esp-idf/components/app_update/include -I/home/alexander/esp/esp-idf/components/spi_flash/include -I/home/alexander/esp/esp-idf/components/pthread/include -I/home/alexander/esp/esp-idf/components/esp_timer/include -I/home/alexander/esp/esp-idf/components/app_trace/include -I/home/alexander/esp/esp-idf/components/esp_event/include -I/home/alexander/esp/esp-idf/components/nvs_flash/include -I/home/alexander/esp/esp-idf/components/esp_phy/include -I/home/alexander/esp/esp-idf/components/esp_phy/esp32/include -I/home/alexander/esp/esp-idf/components/vfs/include -I/home/alexander/esp/esp-idf/components/esp_netif/include -I/home/alexander/esp/esp-idf/components/wpa_supplicant/include -I/home/alexander/esp/esp-idf/components/wpa_supplicant/port/include -I/home/alexander/esp/esp-idf/components/wpa_supplicant/esp_supplicant/include -I/home/alexander/esp/esp-idf/components/esp_coex/include -I/home/alexander/esp/esp-idf/components/esp_wifi/include -I/home/alexander/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/home/alexander/esp/esp-idf/components/unity/include -I/home/alexander/esp/esp-idf/components/unity/unity/src -I/home/alexander/esp/esp-idf/components/cmock/CMock/src -I/home/alexander/esp/esp-idf/components/console -I/home/alexander/esp/esp-idf/components/http_parser -I/home/alexander/esp/esp-idf/components/esp-tls -I/home/alexander/esp/esp-idf/components/esp-tls/esp-tls-crypto -I/home/alexander/esp/esp-idf/components/esp_adc/include -I/home/alexander/esp/esp-idf/components/esp_adc/interface -I/home/alexander/esp/esp-idf/components/esp_adc/esp32/include -I/home/alexander/esp/esp-idf/components/esp_adc/deprecated/include -I/home/alexander/esp/esp-idf/components/esp_gdbstub/include -I/home/alexander/esp/esp-idf/components/esp_hid/include -I/home/alexander/esp/esp-idf/components/tcp_transport/include -I/home/alexander/esp/esp-idf/components/esp_http_client/include -I/home/alexander/esp/esp-idf/components/esp_http_server/include -I/home/alexander/esp/esp-idf/components/esp_https_ota/include -I/home/alexander/esp/esp-idf/components/esp_psram/include -I/home/alexander/esp/esp-idf/components/esp_lcd/include -I/home/alexander/esp/esp-idf/components/esp_lcd/interface -I/home/alexander/esp/esp-idf/components/protobuf-c/protobuf-c -I/home/alexander/esp/esp-idf/components/protocomm/include/common -I/home/alexander/esp/esp-idf/components/protocomm/include/security -I/home/alexander/esp/esp-idf/components/protocomm/include/transports -I/home/alexander/esp/esp-idf/components/esp_local_ctrl/include -I/home/alexander/esp/esp-idf/components/espcoredump/include -I/home/alexander/esp/esp-idf/components/espcoredump/include/port/xtensa -I/home/alexander/esp/esp-idf/components/wear_levelling/include -I/home/alexander/esp/esp-idf/components/sdmmc/include -I/home/alexander/esp/esp-idf/components/fatfs/diskio -I/home/alexander/esp/esp-idf/components/fatfs/src -I/home/alexander/esp/esp-idf/components/fatfs/vfs -I/home/alexander/esp/esp-idf/components/idf_test/include -I/home/alexander/esp/esp-idf/components/idf_test/include/esp32 -I/home/alexander/esp/esp-idf/components/ieee802154/include -I/home/alexander/esp/esp-idf/components/json/cJSON -I/home/alexander/esp/esp-idf/components/mqtt/esp-mqtt/include -I/home/alexander/esp/esp-idf/components/nvs_sec_provider/include -I/home/alexander/esp/esp-idf/components/perfmon/include -I/home/alexander/esp/esp-idf/components/spiffs/include -I/home/alexander/esp/esp-idf/components/wifi_provisioning/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/home/alexander/esp/learn_japanese=. -fmacro-prefix-map=/home/alexander/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/input.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/input.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/input.c.obj -c /home/alexander/esp/learn_japanese/main/input.c
+In file included from /home/alexander/esp/learn_japanese/main/input.c:4:
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:38:6: error: #error "include FreeRTOS.h must appear in source files before include task.h"
+   38 |     #error "include FreeRTOS.h must appear in source files before include task.h"
+      |      ^~~~~
+In file included from /home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:41:
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:66:6: error: #error "FreeRTOS.h must be included before list.h"
+   66 |     #error "FreeRTOS.h must be included before list.h"
+      |      ^~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:151:25: error: unknown type name 'TickType_t'
+  151 |     configLIST_VOLATILE TickType_t xItemValue;          /*< The value being listed.  In most cases this is used to sort the list in ascending order. */
+      |                         ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:179:14: error: unknown type name 'UBaseType_t'
+  179 |     volatile UBaseType_t uxNumberOfItems;
+      |              ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h: In function 'vListInitialise':
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:437:47: error: expected declaration specifiers before 'PRIVILEGED_FUNCTION'
+  437 | void vListInitialise( List_t * const pxList ) PRIVILEGED_FUNCTION;
+      |                                               ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:448:55: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+  448 | void vListInitialiseItem( ListItem_t * const pxItem ) PRIVILEGED_FUNCTION;
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:462:54: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+  462 |                   ListItem_t * const pxNewListItem ) PRIVILEGED_FUNCTION;
+      |                                                      ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:484:57: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+  484 |                      ListItem_t * const pxNewListItem ) PRIVILEGED_FUNCTION;
+      |                                                         ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:499:1: error: unknown type name 'UBaseType_t'
+  499 | UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:499:63: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+  499 | UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove ) PRIVILEGED_FUNCTION;
+      |                                                               ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:92:1: warning: empty declaration
+   92 | struct tskTaskControlBlock; /* The old naming convention is used to prevent breaking kernel aware debuggers. */
+      | ^~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:93:38: error: storage class specified for parameter 'TaskHandle_t'
+   93 | typedef struct tskTaskControlBlock * TaskHandle_t;
+      |                                      ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:99:21: error: expected declaration specifiers or '...' before '*' token
+   99 | typedef BaseType_t (* TaskHookFunction_t)( void * );
+      |                     ^
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:110:3: error: storage class specified for parameter 'eTaskState'
+  110 | } eTaskState;
+      |   ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:120:3: error: storage class specified for parameter 'eNotifyAction'
+  120 | } eNotifyAction;
+      |   ^~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:129:5: error: unknown type name 'BaseType_t'
+  129 |     BaseType_t xOverflowCount;
+      |     ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:130:5: error: unknown type name 'TickType_t'
+  130 |     TickType_t xTimeOnEntering;
+      |     ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:131:3: error: storage class specified for parameter 'TimeOut_t'
+  131 | } TimeOut_t;
+      |   ^~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:141:3: error: storage class specified for parameter 'MemoryRegion_t'
+  141 | } MemoryRegion_t;
+      |   ^~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:148:5: error: unknown type name 'TaskFunction_t'
+  148 |     TaskFunction_t pvTaskCode;
+      |     ^~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:150:5: error: unknown type name 'configSTACK_DEPTH_TYPE'
+  150 |     configSTACK_DEPTH_TYPE usStackDepth;
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:152:5: error: unknown type name 'UBaseType_t'
+  152 |     UBaseType_t uxPriority;
+      |     ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:153:5: error: unknown type name 'StackType_t'
+  153 |     StackType_t * puxStackBuffer;
+      |     ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:154:5: error: expected specifier-qualifier-list before 'MemoryRegion_t'
+  154 |     MemoryRegion_t xRegions[ portNUM_CONFIGURABLE_REGIONS ];
+      |     ^~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:158:3: error: storage class specified for parameter 'TaskParameters_t'
+  158 | } TaskParameters_t;
+      |   ^~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:166:5: error: expected specifier-qualifier-list before 'TaskHandle_t'
+  166 |     TaskHandle_t xHandle;                         /**< The handle of the task to which the rest of the information in the structure relates. */
+      |     ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:180:3: error: storage class specified for parameter 'TaskStatus_t'
+  180 | } TaskStatus_t;
+      |   ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:190:3: error: storage class specified for parameter 'eSleepModeStatus'
+  190 | } eSleepModeStatus;
+      |   ^~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:736:31: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+  736 | void vTaskAllocateMPURegions( TaskHandle_t xTask,
+      |                               ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:737:37: error: type defaults to 'int' in declaration of 'MemoryRegion_t' [-Werror=implicit-int]
+  737 |                               const MemoryRegion_t * const pxRegions ) PRIVILEGED_FUNCTION;
+      |                                     ^~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:737:52: error: expected ';', ',' or ')' before '*' token
+  737 |                               const MemoryRegion_t * const pxRegions ) PRIVILEGED_FUNCTION;
+      |                                                    ^
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:775:19: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+  775 | void vTaskDelete( TaskHandle_t xTaskToDelete ) PRIVILEGED_FUNCTION;
+      |                   ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:824:24: error: unknown type name 'TickType_t'
+  824 | void vTaskDelay( const TickType_t xTicksToDelay ) PRIVILEGED_FUNCTION;
+      |                        ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:824:51: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+  824 | void vTaskDelay( const TickType_t xTicksToDelay ) PRIVILEGED_FUNCTION;
+      |                                                   ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:886:1: error: unknown type name 'BaseType_t'
+  886 | BaseType_t xTaskDelayUntil( TickType_t * const pxPreviousWakeTime,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:886:29: error: unknown type name 'TickType_t'
+  886 | BaseType_t xTaskDelayUntil( TickType_t * const pxPreviousWakeTime,
+      |                             ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:887:35: error: unknown type name 'TickType_t'
+  887 |                             const TickType_t xTimeIncrement ) PRIVILEGED_FUNCTION;
+      |                                   ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:928:1: error: unknown type name 'BaseType_t'
+  928 | BaseType_t xTaskAbortDelay( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:928:29: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+  928 | BaseType_t xTaskAbortDelay( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                             ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:972:1: error: unknown type name 'UBaseType_t'
+  972 | UBaseType_t uxTaskPriorityGet( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:972:38: error: type defaults to 'int' in declaration of 'TaskHandle_t' [-Werror=implicit-int]
+  972 | UBaseType_t uxTaskPriorityGet( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                      ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:972:51: error: expected ';', ',' or ')' before 'xTask'
+  972 | UBaseType_t uxTaskPriorityGet( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                                   ^~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:978:1: error: unknown type name 'UBaseType_t'
+  978 | UBaseType_t uxTaskPriorityGetFromISR( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:978:45: error: type defaults to 'int' in declaration of 'TaskHandle_t' [-Werror=implicit-int]
+  978 | UBaseType_t uxTaskPriorityGetFromISR( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                             ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:978:58: error: expected ';', ',' or ')' before 'xTask'
+  978 | UBaseType_t uxTaskPriorityGetFromISR( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                                          ^~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:994:1: error: expected declaration specifiers before 'eTaskState'
+  994 | eTaskState eTaskGetState( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1047:20: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1047 | void vTaskGetInfo( TaskHandle_t xTask,
+      |                    ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1048:20: error: expected declaration specifiers or '...' before 'TaskStatus_t'
+ 1048 |                    TaskStatus_t * pxTaskStatus,
+      |                    ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1049:20: error: unknown type name 'BaseType_t'
+ 1049 |                    BaseType_t xGetFreeStackSpace,
+      |                    ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1050:20: error: expected declaration specifiers or '...' before 'eTaskState'
+ 1050 |                    eTaskState eState ) PRIVILEGED_FUNCTION;
+      |                    ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1089:24: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1089 | void vTaskPrioritySet( TaskHandle_t xTask,
+      |                        ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1090:24: error: unknown type name 'UBaseType_t'
+ 1090 |                        UBaseType_t uxNewPriority ) PRIVILEGED_FUNCTION;
+      |                        ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1138:20: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1138 | void vTaskSuspend( TaskHandle_t xTaskToSuspend ) PRIVILEGED_FUNCTION;
+      |                    ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1184:19: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1184 | void vTaskResume( TaskHandle_t xTaskToResume ) PRIVILEGED_FUNCTION;
+      |                   ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1210:1: error: unknown type name 'BaseType_t'
+ 1210 | BaseType_t xTaskResumeFromISR( TaskHandle_t xTaskToResume ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1210:32: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1210 | BaseType_t xTaskResumeFromISR( TaskHandle_t xTaskToResume ) PRIVILEGED_FUNCTION;
+      |                                ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1242:34: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1242 | void vTaskStartScheduler( void ) PRIVILEGED_FUNCTION;
+      |                                  ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1295:32: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1295 | void vTaskEndScheduler( void ) PRIVILEGED_FUNCTION;
+      |                                ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1345:30: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1345 | void vTaskSuspendAll( void ) PRIVILEGED_FUNCTION;
+      |                              ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1396:1: error: unknown type name 'BaseType_t'
+ 1396 | BaseType_t xTaskResumeAll( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1396:35: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1396 | BaseType_t xTaskResumeAll( void ) PRIVILEGED_FUNCTION;
+      |                                   ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1408:1: error: unknown type name 'TickType_t'
+ 1408 | TickType_t xTaskGetTickCount( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1408:38: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1408 | TickType_t xTaskGetTickCount( void ) PRIVILEGED_FUNCTION;
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1421:1: error: unknown type name 'TickType_t'
+ 1421 | TickType_t xTaskGetTickCountFromISR( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1421:45: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1421 | TickType_t xTaskGetTickCountFromISR( void ) PRIVILEGED_FUNCTION;
+      |                                             ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1432:1: error: unknown type name 'UBaseType_t'
+ 1432 | UBaseType_t uxTaskGetNumberOfTasks( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1432:44: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1432 | UBaseType_t uxTaskGetNumberOfTasks( void ) PRIVILEGED_FUNCTION;
+      |                                            ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1442:23: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1442 | char * pcTaskGetName( TaskHandle_t xTaskToQuery ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+      |                       ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1455:1: error: expected declaration specifiers before 'TaskHandle_t'
+ 1455 | TaskHandle_t xTaskGetHandle( const char * pcNameToQuery ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+      | ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1503:1: error: unknown type name 'UBaseType_t'
+ 1503 | UBaseType_t uxTaskGetStackHighWaterMark( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1503:42: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1503 | UBaseType_t uxTaskGetStackHighWaterMark( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                          ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1528:1: error: unknown type name 'configSTACK_DEPTH_TYPE'
+ 1528 | configSTACK_DEPTH_TYPE uxTaskGetStackHighWaterMark2( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1528:54: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1528 | configSTACK_DEPTH_TYPE uxTaskGetStackHighWaterMark2( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                                      ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1631:1: error: unknown type name 'BaseType_t'
+ 1631 | BaseType_t xTaskCallApplicationTaskHook( TaskHandle_t xTask,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1631:42: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1631 | BaseType_t xTaskCallApplicationTaskHook( TaskHandle_t xTask,
+      |                                          ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1641:1: error: expected declaration specifiers before 'TaskHandle_t'
+ 1641 | TaskHandle_t xTaskGetIdleTaskHandle( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1740:1: error: unknown type name 'UBaseType_t'
+ 1740 | UBaseType_t uxTaskGetSystemState( TaskStatus_t * const pxTaskStatusArray,
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1740:35: error: expected declaration specifiers or '...' before 'TaskStatus_t'
+ 1740 | UBaseType_t uxTaskGetSystemState( TaskStatus_t * const pxTaskStatusArray,
+      |                                   ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1741:41: error: unknown type name 'UBaseType_t'
+ 1741 |                                   const UBaseType_t uxArraySize,
+      |                                         ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1742:35: error: unknown type name 'configRUN_TIME_COUNTER_TYPE'
+ 1742 |                                   configRUN_TIME_COUNTER_TYPE * const pulTotalRunTime ) PRIVILEGED_FUNCTION;
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1788:40: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1788 | void vTaskList( char * pcWriteBuffer ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+      |                                        ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1839:51: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1839 | void vTaskGetRunTimeStats( char * pcWriteBuffer ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+      |                                                   ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1876:1: error: unknown type name 'configRUN_TIME_COUNTER_TYPE'
+ 1876 | configRUN_TIME_COUNTER_TYPE ulTaskGetIdleRunTimeCounter( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1876:65: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1876 | configRUN_TIME_COUNTER_TYPE ulTaskGetIdleRunTimeCounter( void ) PRIVILEGED_FUNCTION;
+      |                                                                 ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1877:1: error: unknown type name 'configRUN_TIME_COUNTER_TYPE'
+ 1877 | configRUN_TIME_COUNTER_TYPE ulTaskGetIdleRunTimePercent( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1877:65: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 1877 | configRUN_TIME_COUNTER_TYPE ulTaskGetIdleRunTimePercent( void ) PRIVILEGED_FUNCTION;
+      |                                                                 ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1982:1: error: unknown type name 'BaseType_t'
+ 1982 | BaseType_t xTaskGenericNotify( TaskHandle_t xTaskToNotify,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1982:32: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 1982 | BaseType_t xTaskGenericNotify( TaskHandle_t xTaskToNotify,
+      |                                ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1983:32: error: unknown type name 'UBaseType_t'
+ 1983 |                                UBaseType_t uxIndexToNotify,
+      |                                ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:1985:32: error: expected declaration specifiers or '...' before 'eNotifyAction'
+ 1985 |                                eNotifyAction eAction,
+      |                                ^~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2126:1: error: unknown type name 'BaseType_t'
+ 2126 | BaseType_t xTaskGenericNotifyFromISR( TaskHandle_t xTaskToNotify,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2126:39: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2126 | BaseType_t xTaskGenericNotifyFromISR( TaskHandle_t xTaskToNotify,
+      |                                       ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2127:39: error: unknown type name 'UBaseType_t'
+ 2127 |                                       UBaseType_t uxIndexToNotify,
+      |                                       ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2129:39: error: expected declaration specifiers or '...' before 'eNotifyAction'
+ 2129 |                                       eNotifyAction eAction,
+      |                                       ^~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2131:39: error: unknown type name 'BaseType_t'
+ 2131 |                                       BaseType_t * pxHigherPriorityTaskWoken ) PRIVILEGED_FUNCTION;
+      |                                       ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2261:1: error: unknown type name 'BaseType_t'
+ 2261 | BaseType_t xTaskGenericNotifyWait( UBaseType_t uxIndexToWaitOn,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2261:36: error: unknown type name 'UBaseType_t'
+ 2261 | BaseType_t xTaskGenericNotifyWait( UBaseType_t uxIndexToWaitOn,
+      |                                    ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2265:36: error: unknown type name 'TickType_t'
+ 2265 |                                    TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                    ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2417:37: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2417 | void vTaskGenericNotifyGiveFromISR( TaskHandle_t xTaskToNotify,
+      |                                     ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2418:37: error: unknown type name 'UBaseType_t'
+ 2418 |                                     UBaseType_t uxIndexToNotify,
+      |                                     ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2419:37: error: unknown type name 'BaseType_t'
+ 2419 |                                     BaseType_t * pxHigherPriorityTaskWoken ) PRIVILEGED_FUNCTION;
+      |                                     ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2517:35: error: unknown type name 'UBaseType_t'
+ 2517 | uint32_t ulTaskGenericNotifyTake( UBaseType_t uxIndexToWaitOn,
+      |                                   ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2518:35: error: unknown type name 'BaseType_t'
+ 2518 |                                   BaseType_t xClearCountOnExit,
+      |                                   ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2519:35: error: unknown type name 'TickType_t'
+ 2519 |                                   TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                   ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2576:1: error: unknown type name 'BaseType_t'
+ 2576 | BaseType_t xTaskGenericNotifyStateClear( TaskHandle_t xTask,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2576:42: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2576 | BaseType_t xTaskGenericNotifyStateClear( TaskHandle_t xTask,
+      |                                          ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2577:42: error: unknown type name 'UBaseType_t'
+ 2577 |                                          UBaseType_t uxIndexToClear ) PRIVILEGED_FUNCTION;
+      |                                          ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2634:41: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2634 | uint32_t ulTaskGenericNotifyValueClear( TaskHandle_t xTask,
+      |                                         ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2635:41: error: unknown type name 'UBaseType_t'
+ 2635 |                                         UBaseType_t uxIndexToClear,
+      |                                         ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2651:28: error: expected declaration specifiers or '...' before 'TimeOut_t'
+ 2651 | void vTaskSetTimeOutState( TimeOut_t * const pxTimeOut ) PRIVILEGED_FUNCTION;
+      |                            ^~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2731:1: error: unknown type name 'BaseType_t'
+ 2731 | BaseType_t xTaskCheckForTimeOut( TimeOut_t * const pxTimeOut,
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2731:34: error: expected declaration specifiers or '...' before 'TimeOut_t'
+ 2731 | BaseType_t xTaskCheckForTimeOut( TimeOut_t * const pxTimeOut,
+      |                                  ^~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2732:34: error: unknown type name 'TickType_t'
+ 2732 |                                  TickType_t * const pxTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                  ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2755:1: error: unknown type name 'BaseType_t'
+ 2755 | BaseType_t xTaskCatchUpTicks( TickType_t xTicksToCatchUp ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2755:31: error: unknown type name 'TickType_t'
+ 2755 | BaseType_t xTaskCatchUpTicks( TickType_t xTicksToCatchUp ) PRIVILEGED_FUNCTION;
+      |                               ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2782:1: error: unknown type name 'BaseType_t'
+ 2782 | BaseType_t xTaskIncrementTick( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2782:39: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2782 | BaseType_t xTaskIncrementTick( void ) PRIVILEGED_FUNCTION;
+      |                                       ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2816:35: error: unknown type name 'TickType_t'
+ 2816 |                             const TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                   ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2816:61: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2816 |                             const TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                                             ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2818:44: error: unknown type name 'TickType_t'
+ 2818 |                                      const TickType_t xItemValue,
+      |                                            ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2819:44: error: unknown type name 'TickType_t'
+ 2819 |                                      const TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                            ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2819:70: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2819 |                                      const TickType_t xTicksToWait ) PRIVILEGED_FUNCTION;
+      |                                                                      ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2833:39: error: unknown type name 'TickType_t'
+ 2833 |                                       TickType_t xTicksToWait,
+      |                                       ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2834:45: error: unknown type name 'BaseType_t'
+ 2834 |                                       const BaseType_t xWaitIndefinitely ) PRIVILEGED_FUNCTION;
+      |                                             ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2860:1: error: unknown type name 'BaseType_t'
+ 2860 | BaseType_t xTaskRemoveFromEventList( const List_t * const pxEventList ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2860:73: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2860 | BaseType_t xTaskRemoveFromEventList( const List_t * const pxEventList ) PRIVILEGED_FUNCTION;
+      |                                                                         ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2862:47: error: unknown type name 'TickType_t'
+ 2862 |                                         const TickType_t xItemValue ) PRIVILEGED_FUNCTION;
+      |                                               ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2862:71: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2862 |                                         const TickType_t xItemValue ) PRIVILEGED_FUNCTION;
+      |                                                                       ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2872:1: error: expected declaration specifiers before 'portDONT_DISCARD'
+ 2872 | portDONT_DISCARD void vTaskSwitchContext( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2878:1: error: unknown type name 'TickType_t'
+ 2878 | TickType_t uxTaskResetEventItemValue( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2878:46: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2878 | TickType_t uxTaskResetEventItemValue( void ) PRIVILEGED_FUNCTION;
+      |                                              ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2883:1: error: expected declaration specifiers before 'TaskHandle_t'
+ 2883 | TaskHandle_t xTaskGetCurrentTaskHandle( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2889:31: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2889 | void vTaskMissedYield( void ) PRIVILEGED_FUNCTION;
+      |                               ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2895:1: error: unknown type name 'BaseType_t'
+ 2895 | BaseType_t xTaskGetSchedulerState( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2895:43: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'PRIVILEGED_FUNCTION'
+ 2895 | BaseType_t xTaskGetSchedulerState( void ) PRIVILEGED_FUNCTION;
+      |                                           ^~~~~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2901:1: error: unknown type name 'BaseType_t'
+ 2901 | BaseType_t xTaskPriorityInherit( TaskHandle_t const pxMutexHolder ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2901:34: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2901 | BaseType_t xTaskPriorityInherit( TaskHandle_t const pxMutexHolder ) PRIVILEGED_FUNCTION;
+      |                                  ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2907:1: error: unknown type name 'BaseType_t'
+ 2907 | BaseType_t xTaskPriorityDisinherit( TaskHandle_t const pxMutexHolder ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2907:37: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2907 | BaseType_t xTaskPriorityDisinherit( TaskHandle_t const pxMutexHolder ) PRIVILEGED_FUNCTION;
+      |                                     ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2917:43: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2917 | void vTaskPriorityDisinheritAfterTimeout( TaskHandle_t const pxMutexHolder,
+      |                                           ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2918:43: error: unknown type name 'UBaseType_t'
+ 2918 |                                           UBaseType_t uxHighestPriorityWaitingTask ) PRIVILEGED_FUNCTION;
+      |                                           ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2923:1: error: unknown type name 'UBaseType_t'
+ 2923 | UBaseType_t uxTaskGetTaskNumber( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2923:34: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2923 | UBaseType_t uxTaskGetTaskNumber( TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
+      |                                  ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2929:26: error: expected declaration specifiers or '...' before 'TaskHandle_t'
+ 2929 | void vTaskSetTaskNumber( TaskHandle_t xTask,
+      |                          ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2930:32: error: unknown type name 'UBaseType_t'
+ 2930 |                          const UBaseType_t uxHandle ) PRIVILEGED_FUNCTION;
+      |                                ^~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2940:21: error: unknown type name 'TickType_t'
+ 2940 | void vTaskStepTick( TickType_t xTicksToJump ) PRIVILEGED_FUNCTION;
+      |                     ^~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2956:1: error: expected declaration specifiers before 'eSleepModeStatus'
+ 2956 | eSleepModeStatus eTaskConfirmSleepModeStatus( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2962:1: error: expected declaration specifiers before 'TaskHandle_t'
+ 2962 | TaskHandle_t pvTaskIncrementMutexHeldCount( void ) PRIVILEGED_FUNCTION;
+      | ^~~~~~~~~~~~
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2968:36: error: expected declaration specifiers or '...' before 'TimeOut_t'
+ 2968 | void vTaskInternalSetTimeOutState( TimeOut_t * const pxTimeOut ) PRIVILEGED_FUNCTION;
+      |                                    ^~~~~~~~~
+/home/alexander/esp/learn_japanese/main/input.c:7:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+    7 | {
+      | ^
+/home/alexander/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/list.h:437:6: error: old-style parameter declarations in prototyped function definition
+  437 | void vListInitialise( List_t * const pxList ) PRIVILEGED_FUNCTION;
+      |      ^~~~~~~~~~~~~~~
+/home/alexander/esp/learn_japanese/main/input.c:37: error: expected '{' at end of input
+In file included from /home/alexander/esp/learn_japanese/main/input.c:1:
+/home/alexander/esp/learn_japanese/main/game.h: At top level:
+/home/alexander/esp/learn_japanese/main/game.h:11:16: warning: 'input_handled' defined but not used [-Wunused-variable]
+   11 | static uint8_t input_handled;
+      |                ^~~~~~~~~~~~~
+/home/alexander/esp/learn_japanese/main/game.h:10:16: warning: 'menu_selection' defined but not used [-Wunused-variable]
+   10 | static uint8_t menu_selection;
+      |                ^~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.

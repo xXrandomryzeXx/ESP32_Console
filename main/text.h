@@ -28,6 +28,16 @@ struct ui_string{
  */
 uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
 uint8_t create_japanese_text(uint16_t x, uint8_t y, uint8_t *codes, uint8_t len);
+
+/*
+ * @brief Find and delete the text of the given id
+ *
+ * @param id    - ID of the text
+ *
+ * @return      - 0 Failed to delete text because it hasn't been created
+ *              - 1 Successfulyl deleted text
+ */
+uint8_t delete_text(uint8_t id);
 /*
  * @brief Set the color variable of a string with a given id/index
  *

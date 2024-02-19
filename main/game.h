@@ -7,11 +7,8 @@
 
 #include <stdint.h>
 
-/*
- * 0 -> game loop won't run
- * 1 -> game loop will run
- */
-static uint8_t game;
+static uint8_t menu_selection;
+static uint8_t input_handled;
 
 /*
  * @brief   Tracks and updates all logic. Loads files, generates questions, manages memory, etc.
@@ -28,3 +25,8 @@ void Render();
  * @brief   Starts the game loop
  */
 void Start();
+
+/*
+ * @brief   Wait for user input
+ */
+void Input();

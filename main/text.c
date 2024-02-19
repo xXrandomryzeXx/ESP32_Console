@@ -79,6 +79,18 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, uint8_t *codes, uint8_t len)
     return index;
 }
 
+uint8_t delete_text(uint8_t id)
+{
+    if(strings[id].len > 0){
+        strings[id].x = 0;
+        strings[id].y = 0;
+        strings[id].len = 0;
+        free(strings[id].char_codes);
+        return 1;
+    }
+    return 0;
+}
+
 uint8_t set_text_color(uint16_t color, uint8_t id)
 {
     if(strings[id].len == 0)
@@ -119,7 +131,18 @@ uint16_t get_japanese_text_pixel(uint16_t x, uint8_t y, uint8_t id)
 
     uint8_t low_byte = (rel_x >= 8);
 
-    uint8_t pixel_data = hiragana[((japanese_strings[id].char_codes[char_index]-1) * 32) + (y*2) + low_byte];
+    uint16_t pixel_data_index;
+    uint8_t pixel_data;
+    uint8_t char_code = japanese_strings[id].char_codes[char_index];
+
+    if(char_code < 100){
+        pixel_data_index = ((char_code-1) * 32) + (y*2) + low_byte;
+        pixel_data = hiragana[pixel_data_index];
+    }else{
+        pixel_data_index = ((char_code-101) * 32) + (y*2) + low_byte;
+        pixel_data = katakana[pixel_data_index];
+    }
+
     if(pixel_data & (128 >> (rel_x - (8 * low_byte)))){
         return 0xffff;
     }
