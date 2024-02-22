@@ -3,6 +3,8 @@
 #include "decode_image.h"
 
 #include <dirent.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 static const char *TAG = "sd_card";
 
@@ -43,6 +45,61 @@ static esp_err_t s_read_file(const char *path)
     }
     ESP_LOGI(TAG, "Read from file '%s'", line);
 
+    return ESP_OK;
+}
+
+esp_err_t s_read_line(const char *path, char **data, uint16_t line)
+{
+    FILE *f = fopen(path, "r");
+    if(f == NULL) {
+        ESP_LOGE(TAG, "Failed to open file for reading");
+        return ESP_FAIL;
+    }
+
+    uint16_t current_line = 0;
+    char *line_data = malloc(64 * sizeof(char));
+    void* result = NULL;
+    while(current_line <= line){
+        result = fgets(line_data, 64, f);
+        current_line++;
+    }
+
+    fclose(f);
+    
+    if(result == NULL){
+        ESP_LOGE(TAG, "Couldn't read line %d\n", line);
+        free(line_data);
+        return ESP_FAIL;
+    } 
+
+    *data = line_data;
+
+    return ESP_OK; 
+}
+esp_err_t s_write_line(const char *path, char **new_data, uint16_t line)
+{
+    FILE *f = fopen(path, "w+");
+    if(f == NULL) {
+        ESP_LOGE(TAG, "Failed to open file for reading");
+        return ESP_FAIL;
+    }
+    
+    uint16_t current_line = 0;
+    char *line_data = malloc(64 * sizeof(char));
+    void *result = NULL;
+    while(current_line <= line){
+        result = fgets(line_data, 64, f);
+        current_line++;
+    }
+
+    // Reposition cursor
+    long int position = ftell(f);
+    fseek(f, position, SEEK_SET);
+
+    // Write the new data
+    fprintf(f, "%s\n", *new_data);
+    fclose(f);
+    
     return ESP_OK;
 }
 
@@ -110,88 +167,8 @@ esp_err_t sd_spi_init(spi_host_device_t spi_host, const uint8_t cs_pin)
 void sd_init()
 {
     esp_err_t ret;
-     
-    /*sdmmc_host_t host = SDSPI_HOST_DEFAULT();
-
-    spi_bus_config_t bus_cfg = {
-        .mosi_io_num = PIN_NUM_MOSI,
-        .miso_io_num = PIN_NUM_MISO,
-        .sclk_io_num = PIN_NUM_CLK,
-        .quadwp_io_num = -1,
-        .quadhd_io_num = -1,
-        .max_transfer_sz = 4000,
-    };
-
-    ret = spi_bus_initialize(host.slot, &bus_cfg, SDSPI_DEFAULT_DMA);
-    if(ret != ESP_OK){
-        ESP_LOGE(TAG, "Failed to initialize bus");
-        return;
-    }*/
 
     sdmmc_card_print_info(stdout, card);
-
-    /*const char *file_hello = MOUNT_POINT "/hello.txt";
-    char data[MAX_CHAR_SIZE];
-    snprintf(data, MAX_CHAR_SIZE, "%s %s!\n", "Hello", card->cid.name);
-    ret = s_write_file(file_hello, data);
-    if(ret != ESP_OK) {
-        return;
-    }
-
-    const char *file_foo = MOUNT_POINT "/foo.txt";
-
-    struct stat st;
-    if(stat(file_foo, &st) == 0) {
-        // Delete foo.txt if it exists
-        unlink(file_foo);
-    }
-
-    // Rename the hello.txt file
-    ESP_LOGI(TAG, "Renaming file %s to %s", file_hello, file_foo);
-    if(rename(file_hello, file_foo) != 0) {
-        ESP_LOGE(TAG, "Rename failed");
-        return;
-    }
-
-    ret = s_read_file(file_foo);
-    if(ret != ESP_OK){
-        return;
-    }*/
-
-    // Format FATFS
-    /*ret = esp_vfs_fat_sdcard_format(mount_point, card);
-    if(ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to format FATFS(%s)", esp_err_to_name(ret));
-        return;
-    }
-
-    if(stat(file_foo, &st) == 0) {
-        ESP_LOGI(TAG, "file still exists");
-        return;
-    } else {
-        ESP_LOGI(TAG, "file doesn't exist, format done");
-    }*/
-
-    /*const char *file_nihao = MOUNT_POINT"/nihao.txt";
-    memset(data, 0, MAX_CHAR_SIZE);
-    snprintf(data, MAX_CHAR_SIZE, "%s %s!\n", "Nihao", card->cid.name);
-    ret = s_write_file(file_nihao, data);
-    if(ret != ESP_OK) {
-        return;
-    }
-
-    // Open file for reading
-    ret = s_read_file(file_nihao);
-    if(ret != ESP_OK) {
-        return;
-    }*/
-
-    // Done, unmount partition and disable SPI peripheral
-    //esp_vfs_fat_sdcard_unmount(mount_point, card);
-    //ESP_LOGI(TAG, "Card unmounted");
-
-    // De-init the bus
-    //spi_bus_free(host.slot);
 }
 
 

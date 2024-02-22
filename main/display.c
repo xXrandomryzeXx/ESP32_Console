@@ -57,9 +57,6 @@ void get_screen_lines(uint16_t *dest, int line, int n)
 esp_err_t init_background_image(void)
 {
     return decode_image(&pixels, 0);
-    /*pixels = calloc(320 * 240 * sizeof(uint16_t), 0);
-    printf("memory of pixels: %p\n", pixels);
-    return ESP_OK;*/
 }
 
 esp_err_t init_background_image_from_sd(char* path)

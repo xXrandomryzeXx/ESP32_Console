@@ -18,11 +18,37 @@
 spi_device_handle_t lcd_spi;
 spi_device_handle_t sd_spi;
 
+static uint8_t menu_selection;
+static uint8_t input;
+
 /*
  * 0 -> game loop won't run
  * 1 -> game loop will run
  */
 static uint8_t game;
+
+
+void sendInput()
+{
+    input = 1;
+}
+
+void resetInput()
+{
+    input = 0;
+}
+
+void selectMenu(uint8_t menu)
+{
+    if(menu >= 4)
+        return;
+    menu_selection = menu;
+}
+
+uint8_t getSelectedMenu()
+{
+    return menu_selection;
+}
 
 void Start(){
     // Just in case, set state to Null
@@ -69,10 +95,11 @@ void Start(){
 
     // After the initial setup, state can be set to the main menu
     setState(MainMenu);
-    input_handled = 1;
+    sendInput();
     // Basic game loop
     while(game){
-        if(input_handled){
+        printf("input is %d\n", input);
+        if(input){
             Update();
         }
         Render();

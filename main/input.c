@@ -3,15 +3,14 @@
 
 void Input()
 {
-    uint8_t input = 0; 
-    while(!input){
-        input_handled = 0;
+    while(1){
+        resetInput();
         for(int i = 0; i < 4; i++){
             if(get_button_state(i)){
-                menu_selection = i;
-                input_handled = 1;
+                selectMenu(i);
+                sendInput();
+                return;
             }
         }
-        input = input_handled;
     } 
 }

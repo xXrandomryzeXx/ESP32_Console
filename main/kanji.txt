@@ -1,60 +1,42 @@
-[
-日
+10
+1732
+1
 On ニチ,ジツ
 Ku ひ,び,か
 Me day,sun,Japan,counter_for_days
-]
-[
-一
+2
 On イチ
 Ku ひと(つ)
 Me one
-]
-[
-国
+3
 On コク
 Ku くに
 Me country
-]
-[
-人
+4
 On ジン,ニン
 Ku ひと
 Me person
-]
-[
-年
+5
 On ネン
 Ku とし
 Me year,counter_for_years
-]
-[
-大
+6
 On ダイ,タイ
 Ku おお(きい)
 Me large,big
-]
-[
-十
+7
 On ジュウ
 Ku とお,と
 Me ten
-]
-[
-二
+8
 On ニ,ジ
 Ku ふた(つ)
 Me two
-]
-[
-本
+9
 On ホン
 Ku もと
 Me book,present,true,countrer_for_long_cylindrical_things
-]
-[
-中
+10
 On チュウ
 Ku なか,うち,あた(る)
 Me in,inside,middle,mean,center
-]
