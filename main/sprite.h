@@ -3,16 +3,18 @@
 
 #define SPRITES 10
 
-typedef struct{
+struct sprite{
     uint8_t width, height;
-    uint8_t x, y;
+    uint16_t x;
+    uint8_t y;
     uint8_t is_active;
-    uint16_t **pixels;
-    uint8_t id;
-} sprite;
+    uint16_t *pixels;
+};
 
-void create_sprite(uint8_t size, char* file_name, uint8_t id);
+uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size);
 
-void set_sprite_position(uint8_t x, uint8_t y, uint8_t id);
+uint16_t get_sprite_pixel(uint16_t x, uint8_t y, uint8_t id);
+
+void set_sprite_position(uint16_t x, uint8_t y, uint8_t id);
 
 void delete_sprite(uint8_t id);

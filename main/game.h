@@ -18,6 +18,11 @@ void sendInput();
 void resetInput();
 
 /*
+ * @brief   Ignore input on the next frame
+ */
+void ignoreInput();
+
+/*
  * @brief   Sets the selected option
  *
  * @param   menu - Which menu from all 4 has been selected

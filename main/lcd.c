@@ -278,32 +278,24 @@ void display_lcd_prepare()
 
 void display_lcd_screen(spi_device_handle_t spi)
 {
-frame++;
-for(int y = 0; y < 240; y += PARALLEL_LINES) {
-    // Calculate a line
-    get_screen_lines(lines[calc_line], y, PARALLEL_LINES);
+    frame++;
+    for(int y = 0; y < 240; y += PARALLEL_LINES) {
+        // Calculate a line
+        get_screen_lines(lines[calc_line], y, PARALLEL_LINES);
 
-    // Finish up the sending process of the previous line, if any
-    if (sending_line != -1) {
-        send_line_finish(spi);
+        // Finish up the sending process of the previous line, if any
+        if (sending_line != -1) {
+            send_line_finish(spi);
+        }
+
+        // Swap sendinng_line and calc_line
+        sending_line = calc_line;
+        calc_line = (calc_line == 1) ? 0 : 1;
+
+        // Send the line we currently calculated
+        send_lines(spi, y, lines[sending_line]);
+        // The line set is queued up for sending now; the actual sending happens in the
+        // background. We can go on to calculate the next line set as long as we do not
+        // touch line[sending_line]; the SPI sending proces is still reading from that.
     }
-
-    // Swap sendinng_line and calc_line
-    sending_line = calc_line;
-    calc_line = (calc_line == 1) ? 0 : 1;
-
-    // Send the line we currently calculated
-    send_lines(spi, y, lines[sending_line]);
-    // The line set is queued up for sending now; the actual sending happens in the
-    // background. We can go on to calculate the next line set as long as we do not
-    // touch line[sending_line]; the SPI sending proces is still reading from that.
-}
-/*if(get_button_state(0))
-    printf("Button 1 is on\n");
-if(get_button_state(1))
-    printf("Button 2 is on\n");
-if(get_button_state(2))
-    printf("Button 3 is on\n");
-if(get_button_state(3))
-    printf("Button 4 is on\n");*/
 }

@@ -3,9 +3,9 @@
 #include "esp_err.h"
 
 #define BUTTON_1    36
-#define BUTTON_2    35
-#define BUTTON_3    39
-#define BUTTON_4    34
+#define BUTTON_2    39
+#define BUTTON_3    34
+#define BUTTON_4    35
 
 typedef struct{
     uint8_t id;

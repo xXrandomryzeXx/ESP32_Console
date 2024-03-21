@@ -9,18 +9,20 @@
 static const char *TAG = "sd_card";
 
 sdmmc_card_t *card;
-const char mount_point[] = MOUNT_POINT;
 
 static esp_err_t s_write_file(const char *path, char *data)
 {
     ESP_LOGI(TAG, "Opening file %s", path);
+
     FILE *f = fopen(path, "w");
     if (f == NULL) {
         ESP_LOGE(TAG, "Failed to open file for writing");
         return ESP_FAIL;
     }
+
     fprintf(f, data);
     fclose(f);
+
     ESP_LOGI(TAG, "File written");
 
     return ESP_OK;
@@ -29,11 +31,13 @@ static esp_err_t s_write_file(const char *path, char *data)
 static esp_err_t s_read_file(const char *path)
 {
     ESP_LOGI(TAG, "Reading file %s", path);
+
     FILE *f = fopen(path, "r");
     if (f == NULL) {
         ESP_LOGE(TAG, "Failed to open file for reading");
         return ESP_FAIL;
     }
+
     char line[MAX_CHAR_SIZE];
     fgets(line, sizeof(line), f);
     fclose(f);
@@ -52,13 +56,14 @@ esp_err_t s_read_line(const char *path, char **data, uint16_t line)
 {
     FILE *f = fopen(path, "r");
     if(f == NULL) {
-        ESP_LOGE(TAG, "Failed to open file for reading");
+        ESP_LOGE(TAG, "Failed to open file for reading because it's empty or doesn't exist");
         return ESP_FAIL;
     }
 
     uint16_t current_line = 0;
     char *line_data = malloc(64 * sizeof(char));
     void* result = NULL;
+
     while(current_line <= line){
         result = fgets(line_data, 64, f);
         current_line++;
@@ -76,42 +81,34 @@ esp_err_t s_read_line(const char *path, char **data, uint16_t line)
 
     return ESP_OK; 
 }
-esp_err_t s_write_line(const char *path, char **new_data, uint16_t line)
+
+esp_err_t s_write_line(const char *path, char **new_data)
 {
-    FILE *f = fopen(path, "w+");
-    if(f == NULL) {
-        ESP_LOGE(TAG, "Failed to open file for reading");
+    // Open the file and clear it
+    FILE *f = fopen(path, "w");
+    if(f < 0) {
+        ESP_LOGE(TAG, "Failed to open file for writing");
         return ESP_FAIL;
-    }
-    
-    uint16_t current_line = 0;
-    char *line_data = malloc(64 * sizeof(char));
-    void *result = NULL;
-    while(current_line <= line){
-        result = fgets(line_data, 64, f);
-        current_line++;
-    }
+    } 
 
-    // Reposition cursor
-    long int position = ftell(f);
-    fseek(f, position, SEEK_SET);
-
-    // Write the new data
+    // Write the time
     fprintf(f, "%s\n", *new_data);
     fclose(f);
     
     return ESP_OK;
 }
 
-esp_err_t s_load_image(char *path, uint16_t **pixels)
+esp_err_t s_load_image(char *path, uint16_t **pixels, uint8_t size)
 {
     ESP_LOGI(TAG, "Opening image %s", path);
+
     FILE *img = fopen(path, "rb");
     if(img == NULL){
         perror("fopen");
         ESP_LOGE(TAG, "Failed to open image");
         return ESP_FAIL;
     }
+
     ESP_LOGI(TAG, "Image opened");
 
     // Getting size of file
@@ -125,7 +122,7 @@ esp_err_t s_load_image(char *path, uint16_t **pixels)
     fclose(img);
 
     ESP_LOGI(TAG, "Decoding image");
-    return decode_image_from_sd(pixels, read_pixels, len, 0);
+    return decode_image_from_sd(pixels, read_pixels, len, size);
 }
 
 // Should be called before sd_init
@@ -150,7 +147,7 @@ esp_err_t sd_spi_init(spi_host_device_t spi_host, const uint8_t cs_pin)
     sdmmc_host_t host = SDSPI_HOST_DEFAULT();
 
     ESP_LOGI(TAG, "Mounting filesystem");
-    ret = esp_vfs_fat_sdspi_mount(mount_point, &host, &slot_config, &mount_config, &card);
+    ret = esp_vfs_fat_sdspi_mount(MOUNT_POINT, &host, &slot_config, &mount_config, &card);
     if(ret != ESP_OK) {
         if(ret == ESP_FAIL) {
             ESP_LOGE(TAG, "Failed to mount filesystem");
@@ -174,6 +171,6 @@ void sd_init()
 
 void sd_unmount()
 {
-    esp_vfs_fat_sdcard_unmount(mount_point, card);
+    esp_vfs_fat_sdcard_unmount(MOUNT_POINT, card);
     ESP_LOGI(TAG, "Card unmounted");
 }

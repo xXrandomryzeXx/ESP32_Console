@@ -4,11 +4,14 @@
 
 #include "memory.h"
 #include "text.h"
+#include "sprite.h"
 
 uint16_t *pixels;
 
 extern struct ui_string strings[10];
 extern struct ui_string japanese_strings[10];
+
+extern struct sprite sprites[SPRITES];
 
 static inline uint16_t get_background_pixel(int x, int y)
 {
@@ -21,6 +24,18 @@ void get_screen_lines(uint16_t *dest, int line, int n)
         // Draw background
         for(int x = 0; x < 320; x++) {
             *dest++ = get_background_pixel(x, y);
+            
+            // Draw sprites
+            for(int i = 0; i < SPRITES; i++){
+                if(sprites[i].is_active){
+                    if(y >= sprites[i].y && y < sprites[i].y + sprites[i].height &&
+                       x >= sprites[i].x && x < sprites[i].x + sprites[i].width){
+                        uint16_t ret = get_sprite_pixel(x - sprites[i].x, y - sprites[i].y, i);
+                        *(dest-1) = ret;
+                    }
+                }
+            }
+
             // Draw english text
             for(int i = 0; i < 3; i++){
                 if(strings[i].len > 0){
@@ -61,5 +76,5 @@ esp_err_t init_background_image(void)
 
 esp_err_t init_background_image_from_sd(char* path)
 {
-    return s_load_image(path, &pixels);
+    return s_load_image(path, &pixels, 0);
 }

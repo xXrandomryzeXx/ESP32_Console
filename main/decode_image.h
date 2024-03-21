@@ -21,7 +21,7 @@
  *          - ESP_ERR_NO_MEM if there is no memory (ran out of RAM)
  *          - ESP_OK successful decode
  */
-esp_err_t decode_image(uint16_t **pixels, int size);
+esp_err_t decode_image(uint16_t **pixels, uint8_t size);
 
 
 
@@ -38,4 +38,4 @@ esp_err_t decode_image(uint16_t **pixels, int size);
  *          - ESP_OK successful decode
  */
 esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *image_start, uint32_t image_size,
-        int size);
+        uint8_t size);

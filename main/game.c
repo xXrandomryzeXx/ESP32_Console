@@ -19,8 +19,7 @@ spi_device_handle_t lcd_spi;
 spi_device_handle_t sd_spi;
 
 static uint8_t menu_selection;
-static uint8_t input;
-
+int8_t input;
 /*
  * 0 -> game loop won't run
  * 1 -> game loop will run
@@ -36,6 +35,11 @@ void sendInput()
 void resetInput()
 {
     input = 0;
+}
+
+void ignoreInput()
+{
+    input = -1;
 }
 
 void selectMenu(uint8_t menu)
@@ -98,7 +102,6 @@ void Start(){
     sendInput();
     // Basic game loop
     while(game){
-        printf("input is %d\n", input);
         if(input){
             Update();
         }

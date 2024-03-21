@@ -4,32 +4,42 @@
 
 #include "display.h"
 #include "text.h"
+#include "sprite.h"
 #include "question.h"
 
 uint8_t options_text[4];
 uint8_t options[4];
 uint8_t initial = 1;
 
+// Game variables
+struct question q;
+uint8_t can_play = 0;
+
 void Update()
 {
     uint8_t menu = getSelectedMenu();
+
     // If input is not from the options, skip
     if(!options[menu] && !initial)
         return;
 
     // Check inputs
+    // Game logic goes in here
     if(options[menu] && !initial){
         if(getState() == 1){ // Main menu
             if(menu == 0){ // Play button pressed
+                printf("Play!\n");
                 setState(Game);
                 initial = 1;
-                printf("Play!\n");
             }
+        }else if(getState() == 2 && can_play){ // Game logic
+        
         }
     }
 
 
     // This activates on state change
+    // Load and set up the scenes
     if(getState() == 1){ // Main menu
         if(initial)
             initial = 0;
@@ -49,8 +59,15 @@ void Update()
     }else if(getState() == 2){ // Game state 
         if(initial){
             initial = 0;
+            setState(Generate);
+            ignoreInput();
+            return;
         }
-
+        printf("Answers:\n");
+        for(int i = 0; i < 4; i++){
+            printf("%s\n", q.answers[i]);
+        }
+        
         // Reset options
         for(int i = 0; i < 4; i++){
             options[i] = 0; // Set all options to 0 - meaning nothing to select
@@ -59,15 +76,28 @@ void Update()
 
         // Change background
         init_background_image_from_sd("/sdcard/bckg2.jpg");
-        generateQuestion();
 
-    } else if(getState() == 2) {
-        if(initial){
-            initial = 0;
+        // Create the kanji sprite
+        char *filename = malloc(8*sizeof(char));
+        sprintf(filename, "%d", q.index + 1);
+        uint8_t kanji_sprite = create_sprite(filename, 128, 20, 1);
+        
+        // Create answers text
+        for(int i = 0; i < 4; i++){
+            options[i] = 1;
+            options_text[i] = create_text(20, 50 + (20*i), q.answers[i], 8);
+        }
 
-        }    
+        can_play = 1;
+
+    } else if(getState() == 3) { // Question generation
+        printf("Generating question\n");
+        generateQuestion(&q);
+        setState(Game);
+        ignoreInput();
+        return;
     }
 
-
+    printf("Input reset!\n");
     resetInput();
 }

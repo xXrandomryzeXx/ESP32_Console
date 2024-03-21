@@ -12,6 +12,8 @@ set(srcs "display.c"
     "state_machine.c"
     "input.c"
     "question.c"
+    "sprite.c"
+    "rand.c"
     )
 
 idf_component_register(SRCS ${srcs}

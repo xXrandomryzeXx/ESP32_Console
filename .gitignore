@@ -40,3 +40,5 @@ Thumbs.db
 #########################
 build/
 main/build/
+./build/
+./main/build/
