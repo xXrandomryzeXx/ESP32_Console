@@ -1,9 +1,0 @@
-[0/1] Re-running CMake...
--- Building ESP-IDF components for target esp32
-Processing 2 dependencies:
-[1/2] espressif/esp_jpeg (1.0.5~1)
-[2/2] idf (5.2.0)
--- Configuring incomplete, errors occurred!
-See also "/home/alexander/esp/learn_japanese/build/CMakeFiles/CMakeOutput.log".
-FAILED: build.ninja 
-/usr/bin/cmake --regenerate-during-build -S/home/alexander/esp/learn_japanese -B/home/alexander/esp/learn_japanese/build
