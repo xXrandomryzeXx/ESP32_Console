@@ -8,10 +8,12 @@
 
 void generateQuestion(struct question *this_question)
 {
+    //this_question = malloc(sizeof(this_question));
     // Allocate memory for the anwer strings
     for(int i = 0; i < 4; i++){
         // This allocation shouldn't be freed because it's used by another code.
-        this_question->answers[4] = malloc(64*sizeof(char));
+        this_question->answers[i] = malloc(64*sizeof(char));
+        memset(this_question->answers[i], 0, 64*sizeof(char));
     }
 
     // Allocate memory for line reading
@@ -32,8 +34,8 @@ void generateQuestion(struct question *this_question)
     uint16_t target_line = this_question->index * 4 + 2; 
 
     // Generate type
-    //this_question->type = getRandNum(3);
-    this_question->type = 2;
+    this_question->type = getRandNum(3);
+    //this_question->type = 1;
     printf("Type: %d\n", this_question->type);
     
     // Store answer indexes
@@ -79,7 +81,7 @@ void generateQuestion(struct question *this_question)
         uint8_t ite = 0;
 
         for(uint8_t j = 3; j < 64; j++){
-            if(ite >= 5)
+            if(ite >= 4)
                 break;
             if(line[j] == ','){
                 answer_line_array[ite][end] = '\0';
@@ -88,14 +90,18 @@ void generateQuestion(struct question *this_question)
                 continue;
             }
             if(line[j] == '\0'){
-                answer_line_array[ite][end] = '\0';
+                answer_line_array[ite][--end] = '\0';
                 break;
             }
             answer_line_array[ite][end] = line[j];
             end++;
         }
-        this_question->answers[i] = answer_line_array[0];
-        printf("Printing %d answer: %s\n", i, this_question->answers[i]);
+        strcpy(this_question->answers[i], answer_line_array[0]);
+        for(int j = 0; j < 64; j++){
+            printf("%c", this_question->answers[i][j]);
+        }
+        printf("\n");
     } 
+    
     free(line);
 }

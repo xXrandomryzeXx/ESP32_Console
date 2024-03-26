@@ -1,5 +1,7 @@
 #include "game.h"
 
+#include <string.h>
+
 #include "state_machine.h"
 
 #include "display.h"
@@ -10,6 +12,7 @@
 uint8_t options_text[4];
 uint8_t options[4];
 uint8_t initial = 1;
+char *ans[4];
 
 // Game variables
 struct question q;
@@ -63,15 +66,12 @@ void Update()
             ignoreInput();
             return;
         }
-        printf("Answers:\n");
-        for(int i = 0; i < 4; i++){
-            printf("%s\n", q.answers[i]);
-        }
         
         // Reset options
         for(int i = 0; i < 4; i++){
             options[i] = 0; // Set all options to 0 - meaning nothing to select
             delete_text(options_text[i]); // Delete all texts
+            //delete_japanese_text(options_text[i]);
         }
 
         // Change background
@@ -85,7 +85,11 @@ void Update()
         // Create answers text
         for(int i = 0; i < 4; i++){
             options[i] = 1;
-            options_text[i] = create_text(20, 50 + (20*i), q.answers[i], 8);
+            if(q.type == 2){ /* English Text */
+               options_text[i] = create_text(20, 50 + (20*i), q.answers[i], 8);
+            }else{           /* Japanese Text */
+               options_text[i] = create_japanese_text(20, 50 + (20*i), q.answers[i], 16);
+            }
         }
 
         can_play = 1;
@@ -93,11 +97,13 @@ void Update()
     } else if(getState() == 3) { // Question generation
         printf("Generating question\n");
         generateQuestion(&q);
+        /*for(int i = 0; i < 4; i++){
+            ans[i] = malloc(sizeof(char) * 64);
+            strcpy(ans[i], q.answers[i]);
+        }*/
         setState(Game);
         ignoreInput();
         return;
     }
-
-    printf("Input reset!\n");
     resetInput();
 }

@@ -27,7 +27,7 @@ struct ui_string{
  *              -  index Successfully  created text
  */
 uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
-uint8_t create_japanese_text(uint16_t x, uint8_t y, uint8_t *codes, uint8_t len);
+uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len);
 
 /*
  * @brief Find and delete the text of the given id

@@ -5,6 +5,7 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 static const char *TAG = "sd_card";
 
@@ -77,8 +78,8 @@ esp_err_t s_read_line(const char *path, char **data, uint16_t line)
         return ESP_FAIL;
     } 
 
-    *data = line_data;
-
+    strcpy(*data, line_data);
+    free(line_data);
     return ESP_OK; 
 }
 
