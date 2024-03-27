@@ -84,11 +84,13 @@ void Update()
         
         // Create answers text
         for(int i = 0; i < 4; i++){
+            uint16_t xPos = ((i%2) * 220) + 20;
+            uint8_t yPos = ((i < 2) * 80) + 110;
             options[i] = 1;
             if(q.type == 2){ /* English Text */
-               options_text[i] = create_text(20, 50 + (20*i), q.answers[i], 8);
+               options_text[i] = create_text(xPos, yPos, q.answers[i], 8);
             }else{           /* Japanese Text */
-               options_text[i] = create_japanese_text(20, 50 + (20*i), q.answers[i], 16);
+               options_text[i] = create_japanese_text(xPos, yPos, q.answers[i], 16);
             }
         }
 
