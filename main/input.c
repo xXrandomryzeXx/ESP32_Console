@@ -16,6 +16,5 @@ void Input()
             }
         }
     } 
-    printf("ignoring input\n");
     input = 1;
 }

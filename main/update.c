@@ -9,57 +9,67 @@
 #include "sprite.h"
 #include "question.h"
 
-uint8_t options_text[4];
+/* IDs */
+uint8_t text_id[4];
+uint8_t kanji_sprite_id;
+
 uint8_t options[4];
 uint8_t initial = 1;
 char *ans[4];
 
-// Game variables
+/* Game variables */
 struct question q;
 uint8_t can_play = 0;
 
 void Update()
 {
-    uint8_t menu = getSelectedMenu();
+    uint8_t input = getSelectedMenu();
 
-    // If input is not from the options, skip
-    if(!options[menu] && !initial)
+    /* If input is not from the options, skip */
+    if(!options[input] && !initial)
         return;
 
-    // Check inputs
-    // Game logic goes in here
-    if(options[menu] && !initial){
-        if(getState() == 1){ // Main menu
-            if(menu == 0){ // Play button pressed
-                printf("Play!\n");
+    /* Check inputs
+     * Game logic goes in here */
+    if(options[input] && !initial){
+        if(getState() == 1){ /* Main input */
+            if(input == 0){ /* Play button pressed */
                 setState(Game);
                 initial = 1;
             }
-        }else if(getState() == 2 && can_play){ // Game logic
-        
+        }else if(getState() == 2 && can_play){ /* Game logic */
+            /* Answer questions */
+            if(input == q.answer){ /* The answer is correct */
+                printf("Correct answer!\n"); 
+            }else{                 /* The answer is wrong */
+                printf("Wrong answer!\n");
+            }
+            setState(Generate);
+            ignoreInput();
+            can_play = 0;
         }
     }
 
 
-    // This activates on state change
-    // Load and set up the scenes
-    if(getState() == 1){ // Main menu
+    /* This activates on state change
+     * Load and set up the scenes */
+    if(getState() == 1){ /* Main input */
         if(initial)
             initial = 0;
-        // Create options
-        // Reset the options
+        /* Create options */
+        /* Reset the options */
         for(int i = 0; i < 4; i++){
             options[i] = 0;
-            delete_text(options_text[i]);
+            delete_text(text_id[i]);
         }
         
-        options[0] = 1; // Play
-        options[2] = 1; // Quit
+        options[0] = 1; /* Play */
+        options[2] = 1; /* Quit */
 
-        // Create text for menu options
-        options_text[0] = create_text(10, 100, "Play", 4);
-        options_text[3] = create_text(10, 170, "Quit", 4);
-    }else if(getState() == 2){ // Game state 
+        /* Create text for input options */
+        text_id[0] = create_text(10, 100, "Play", 4);
+        text_id[3] = create_text(10, 170, "Quit", 4);
+    }else if(getState() == 2){ /* Game state */
         if(initial){
             initial = 0;
             setState(Generate);
@@ -67,42 +77,43 @@ void Update()
             return;
         }
         
-        // Reset options
+        /* Reset options */
         for(int i = 0; i < 4; i++){
-            options[i] = 0; // Set all options to 0 - meaning nothing to select
-            delete_text(options_text[i]); // Delete all texts
-            //delete_japanese_text(options_text[i]);
+            options[i] = 0; /* Set all options to 0 - meaning nothing to select */
+            delete_text(text_id[i]); /* Delete all texts */
         }
 
-        // Change background
+        /* Delete last sprite if it exists */
+        if(kanji_sprite_id){
+           delete_sprite(kanji_sprite_id);
+        }
+
+        /* Change background */
         init_background_image_from_sd("/sdcard/bckg2.jpg");
 
-        // Create the kanji sprite
+ 
+        /* Create the kanji sprite */
         char *filename = malloc(8*sizeof(char));
         sprintf(filename, "%d", q.index + 1);
-        uint8_t kanji_sprite = create_sprite(filename, 128, 20, 1);
-        
-        // Create answers text
+        kanji_sprite_id = create_sprite(filename, 128, 20, 1);
+        free(filename); 
+
+        /* Create answers text */
         for(int i = 0; i < 4; i++){
             uint16_t xPos = ((i%2) * 220) + 20;
-            uint8_t yPos = ((i < 2) * 80) + 110;
+            uint8_t yPos = ((i >= 2) * 80) + 110;
             options[i] = 1;
             if(q.type == 2){ /* English Text */
-               options_text[i] = create_text(xPos, yPos, q.answers[i], 8);
+               text_id[i] = create_text(xPos, yPos, q.answers[i], 8);
             }else{           /* Japanese Text */
-               options_text[i] = create_japanese_text(xPos, yPos, q.answers[i], 16);
+               text_id[i] = create_japanese_text(xPos, yPos, q.answers[i], 16);
             }
         }
 
         can_play = 1;
 
-    } else if(getState() == 3) { // Question generation
-        printf("Generating question\n");
+    } else if(getState() == 3) { /* Question generation */
         generateQuestion(&q);
-        /*for(int i = 0; i < 4; i++){
-            ans[i] = malloc(sizeof(char) * 64);
-            strcpy(ans[i], q.answers[i]);
-        }*/
         setState(Game);
         ignoreInput();
         return;

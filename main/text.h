@@ -21,18 +21,31 @@ struct ui_string{
  * @param x     - X position, where to draw the top left position of the text
  *        y     - Y position, where to draw the top left position of the text
  *        text  - The text string that will be drawn to the screen
- *        len   - The length of the the given string
+ *        len   - The length of the the given string in bytes
  *
  * @return      -  -1 Failed to allocate memory or there is no space in the array
- *              -  index Successfully  created text
+ *              -  index Successfully created text
  */
 uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
+
+
+/*
+ * @bried Find a free space in the japanese strings array, and create a new text there
+ *
+ * @param x     - X position, where to draw the top left position of the text
+ *        y     - Y position, where to draw the top left position of the text
+ *        text  - The text string that will be drawn to the screen
+ *        len   - The length of the the given string in bytes
+ *
+ * @return      -  -1 Failed to allocate memory or there is no space in the array
+ *              -  index + 10 Successfully created text
+ */
 uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len);
 
 /*
  * @brief Find and delete the text of the given id
  *
- * @param id    - ID of the text
+ * @param id    - ID of the text | if ID >= 10 then it's a japanese string
  *
  * @return      - 0 Failed to delete text because it hasn't been created
  *              - 1 Successfulyl deleted text

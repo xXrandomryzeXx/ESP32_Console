@@ -29,15 +29,14 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
         }
         sprites[index].is_active = 1;
 
-        // Load image from SD card
+        /* Load image from SD card */
 
-        // Create path
+        /* Create path */
         char *path = malloc(strlen("/sdcard/kanji/") + strlen(file_name) + strlen(".jpg") + 1);
         strcpy(path, "/sdcard/kanji/");
         strcat(path, file_name);
         strcat(path, ".jpg");
-        printf("%s\n", path);
-        
+
         s_load_image(path, &sprites[index].pixels, size);
     }
     return index;
@@ -46,4 +45,16 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
 uint16_t get_sprite_pixel(uint16_t x, uint8_t y, uint8_t id)
 {
    return (uint16_t) *(sprites[id].pixels + (y * sprites[id].width) + x);
+}
+
+void delete_sprite(uint8_t id)
+{
+    if(sprites[id].is_active){
+       sprites[id].width = 0;
+       sprites[id].height = 0;
+       sprites[id].x = 0;
+       sprites[id].y = 0;
+       sprites[id].is_active = 0;
+       free(sprites[id].pixels);
+    }
 }

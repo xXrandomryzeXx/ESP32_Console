@@ -70,17 +70,17 @@ err:
 }
 
 
-esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *image_start, uint32_t image_size,
+esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t image_size,
         uint8_t size)
 {
     esp_err_t ret = ESP_OK;
 
-    // JPEG decode config
+    /* JPEG decode config */
     esp_jpeg_image_cfg_t jpeg_cfg = {
-        .indata = image_start,
+        .indata = input_data,
         .indata_size = image_size,
         .outbuf = (uint8_t*)(*pixels),
-        //.outbuf_size = IMAGE_W * IMAGE_H * sizeof(uint16_t),
+        /* .outbuf_size = IMAGE_W * IMAGE_H * sizeof(uint16_t), */
         .out_format = JPEG_IMAGE_FORMAT_RGB565,
         .flags = {
             .swap_color_bytes = 1,
@@ -99,9 +99,12 @@ esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *image_start, uint32_t
         jpeg_cfg.outbuf_size = IMAGE_8 * IMAGE_8 * sizeof(uint16_t);
     }
 
-    // JPEG decode
+    /* JPEG decode */
     esp_jpeg_image_output_t outimg;
     esp_jpeg_decode(&jpeg_cfg, &outimg);
+
+    /* Free the input data */
+    free(input_data);
 
     return ret;
 }

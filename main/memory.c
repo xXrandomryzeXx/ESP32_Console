@@ -114,16 +114,16 @@ esp_err_t s_load_image(char *path, uint16_t **pixels, uint8_t size)
 
     // Getting size of file
     fseek(img, 0, SEEK_END);
-    uint32_t len = ftell(img);
+    uint32_t img_size = ftell(img);
     fseek(img, 0, SEEK_SET);
 
     // Create pointer to store the data from the file
-    uint8_t *read_pixels = malloc(len * sizeof(uint8_t));
-    fread(read_pixels, len, 1, img);
+    uint8_t *read_pixels = malloc(img_size * sizeof(uint8_t));
+    fread(read_pixels, img_size, 1, img);
     fclose(img);
 
     ESP_LOGI(TAG, "Decoding image");
-    return decode_image_from_sd(pixels, read_pixels, len, size);
+    return decode_image_from_sd(pixels, read_pixels, img_size, size);
 }
 
 // Should be called before sd_init

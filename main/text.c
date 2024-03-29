@@ -80,7 +80,6 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
         return -1;  // Failed to allocate memory
     }
     
-    printf("Japanese text is %s\n", text);
     /* Convert text to "separate" chars.
      * Each japanese char from Katakana and Hiragana consist of 3 chars */
 
@@ -91,13 +90,11 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
          * this way we only go 1 byte forward */
         switch(text[i*3 + offset]){
             case '(':
-               printf("Code: %d\n", 84);
                japanese_strings[index].char_codes[i + offset] = 84;
                ++offset;
                --i;
                continue;
             case ')':
-               printf("Code: %d\n", 85);
                japanese_strings[index].char_codes[i + offset] = 85;
                ++offset;
                --i;
@@ -132,20 +129,29 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
             
         }
         japanese_strings[index].char_codes[i + offset] = code;
-        printf("Code: %d\n", code);
     }
 
-    return index;
+    return index + 10;
 }
 
 uint8_t delete_text(uint8_t id)
 {
-    if(strings[id].len > 0){
-        strings[id].x = 0;
-        strings[id].y = 0;
-        strings[id].len = 0;
-        free(strings[id].char_codes);
-        return 1;
+    if(id < 10){
+        if(strings[id].len > 0){
+             strings[id].x = 0;
+             strings[id].y = 0;
+             strings[id].len = 0;
+             free(strings[id].char_codes);
+             return 1;
+        }
+    }else{
+        id = id - 10;
+        if(japanese_strings[id].len > 0){
+             japanese_strings[id].x = 0;
+             japanese_strings[id].x = 0;
+             japanese_strings[id].len = 0;
+             free(japanese_strings[id].char_codes);
+        }
     }
     return 0;
 }

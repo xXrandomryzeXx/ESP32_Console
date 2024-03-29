@@ -26,7 +26,6 @@ void generateQuestion(struct question *this_question)
 
     all = atoi(line);  // Convert string to int
 
-    printf("Available kanji to choose from: %d\n", all);
     this_question->index = getRandNum(all);
 
     // Has to be +2 and not +1 because of the first line in the file
@@ -35,8 +34,6 @@ void generateQuestion(struct question *this_question)
 
     // Generate type
     this_question->type = getRandNum(3);
-    //this_question->type = 1;
-    printf("Type: %d\n", this_question->type);
     
     // Store answer indexes
     uint16_t indexes[4];
@@ -44,8 +41,6 @@ void generateQuestion(struct question *this_question)
     // Get an answer
     this_question->answer = getRandNum(4);
     indexes[this_question->answer] = target_line;
-    
-    printf("Ans index: %d\n", this_question->answer);
 
     // Generate random indexes for the rest of the answers
     for(uint8_t i = 0; i < 4; i++){
@@ -97,10 +92,6 @@ void generateQuestion(struct question *this_question)
             end++;
         }
         strcpy(this_question->answers[i], answer_line_array[0]);
-        for(int j = 0; j < 64; j++){
-            printf("%c", this_question->answers[i][j]);
-        }
-        printf("\n");
     } 
     
     free(line);
