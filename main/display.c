@@ -37,7 +37,7 @@ void get_screen_lines(uint16_t *dest, int line, int n)
             }
 
             // Draw english text
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 5; i++){
                 if(strings[i].len > 0){
                     if(y >= strings[i].y && y < strings[i].y + 16 &&
                        x >= strings[i].x && x < strings[i].x + strings[i].len * 8) {
@@ -50,7 +50,7 @@ void get_screen_lines(uint16_t *dest, int line, int n)
             }
 
             // Draw japanese text
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 5; i++){
                 if(japanese_strings[i].len > 0){
                     if(y >= japanese_strings[i].y &&
                        y < japanese_strings[i].y + 16 &&

@@ -27,13 +27,18 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
             sprites[index].height = 64;
             sprites[index].pixels = malloc(64*64*sizeof(uint16_t));
         }
+        if(size == 5){
+            sprites[index].width = 128;
+            sprites[index].height = 128;
+            sprites[index].pixels = malloc(128*128*sizeof(uint16_t));
+        }
         sprites[index].is_active = 1;
 
         /* Load image from SD card */
 
         /* Create path */
-        char *path = malloc(strlen("/sdcard/kanji/") + strlen(file_name) + strlen(".jpg") + 1);
-        strcpy(path, "/sdcard/kanji/");
+        char *path = malloc(strlen("/sdcard/") + strlen(file_name) + strlen(".jpg") + 1);
+        strcpy(path, "/sdcard/");
         strcat(path, file_name);
         strcat(path, ".jpg");
 

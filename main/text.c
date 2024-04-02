@@ -1,6 +1,7 @@
 #include "text.h"
 #include "font.h"
 #include <math.h>
+#include <string.h>
 
 struct ui_string strings[10];
 struct ui_string japanese_strings[10];
@@ -23,7 +24,7 @@ char* hir[85] = {
 "ゐ","ゑ","を","ん"," "
 };
 
-uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len)
+uint8_t create_text(uint16_t x, uint8_t y, char *text)
 {
     int index = -1;
     for(int i = 0; i < 10; i++)
@@ -39,18 +40,23 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len)
     
     strings[index].x = x;
     strings[index].y = y;
-    strings[index].len = len;
 
-    strings[index].char_codes = malloc(len * sizeof(uint8_t));
+    strings[index].char_codes = malloc(TEXT_LENGTH);
+    memset(strings[index].char_codes, 0, TEXT_LENGTH);
     
     if(!strings[index].char_codes){
         free(strings[index].char_codes);
         return -1;  // Failed to allocate memory
     }
-
-    for(int i = 0; i < len; i++){
-        strings[index].char_codes[i] = (int)text[i] - 32;
+    char ch;
+    uint8_t i;
+    uint8_t length = 0;
+    for(i = 0; (ch = text[i]) != '\0'; ++i){
+        strings[index].char_codes[i] = ch - 32;
+        length++;
     }
+    strings[index].char_codes[++i] = '\0';
+    strings[index].len = length;
     return index;
 }
 
@@ -134,6 +140,23 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
     return index + 10;
 }
 
+void update_text(uint16_t x, uint8_t y, uint8_t id)
+{
+    if(id < 10){
+        if(strings[id].len > 0){
+            strings[id].x = x;
+            strings[id].y = y;
+        }
+    }else{
+        id = id - 10;
+        if(japanese_strings[id].len > 0){
+            japanese_strings[id].x = x;
+            japanese_strings[id].y = y;
+        }
+    }
+    
+}
+
 uint8_t delete_text(uint8_t id)
 {
     if(id < 10){
@@ -213,4 +236,9 @@ uint16_t get_japanese_text_pixel(uint16_t x, uint8_t y, uint8_t id)
     }
     return 0x0000;
     
+}
+
+uint8_t get_text_len(uint8_t id){
+    printf("Length of id %d is: %d\n", id, strings[id].len);
+    return strings[id].len;
 }

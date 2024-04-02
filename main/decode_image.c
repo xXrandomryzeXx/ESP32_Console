@@ -4,6 +4,7 @@
 #include "esp_check.h"
 #include <string.h>
 #include "freertos/FreeRTOS.h"
+#include "esp_heap_caps.h"
 
 // Reference binary included jpeg file called background.jpg
 extern const uint8_t image_jpg_start[] asm("_binary_background_jpg_start");
@@ -70,8 +71,7 @@ err:
 }
 
 
-esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t image_size,
-        uint8_t size)
+esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t image_size, uint8_t size)
 {
     esp_err_t ret = ESP_OK;
 
@@ -95,7 +95,11 @@ esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t 
         jpeg_cfg.outbuf_size = IMAGE_32 * IMAGE_32 * sizeof(uint16_t);
     } else if(size == 3){
         jpeg_cfg.outbuf_size = IMAGE_16 * IMAGE_16 * sizeof(uint16_t);
-    } else/* if(size == 4)*/{
+    } else if(size == 5){
+        printf("Trying to allocate %d of bytes\n", 128*128*2);
+        printf("Largest free memory block: %d\n", heap_caps_get_largest_free_block(MALLOC_CAP_8BIT));
+        jpeg_cfg.outbuf_size = IMAGE_128 * IMAGE_128 * sizeof(uint16_t);
+    }else/* if(size == 4)*/{
         jpeg_cfg.outbuf_size = IMAGE_8 * IMAGE_8 * sizeof(uint16_t);
     }
 

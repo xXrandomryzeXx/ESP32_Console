@@ -5,6 +5,7 @@
 #define IMAGE_W 320
 #define IMAGE_H 240
 
+#define IMAGE_128 128
 #define IMAGE_64 64
 #define IMAGE_32 32
 #define IMAGE_16 16

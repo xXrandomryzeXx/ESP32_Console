@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include "esp_err.h"
 
+#define TEXT_LENGTH 8
+
 /*
  * char_codes - The indexes of the character inside the font array
  * len        - The number of characters, including spaces
@@ -11,7 +13,8 @@
 struct ui_string{
     uint8_t *char_codes;
     uint8_t len;
-    uint8_t x, y;
+    uint16_t x;
+    uint8_t y;
     uint16_t color;
 };
 
@@ -26,7 +29,7 @@ struct ui_string{
  * @return      -  -1 Failed to allocate memory or there is no space in the array
  *              -  index Successfully created text
  */
-uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
+uint8_t create_text(uint16_t x, uint8_t y, char *text);
 
 
 /*
@@ -42,6 +45,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text, uint8_t len);
  */
 uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len);
 
+void update_text(uint16_t x, uint8_t y, uint8_t id);
 /*
  * @brief Find and delete the text of the given id
  *
@@ -72,7 +76,16 @@ uint8_t set_japanese_text_color(uint16_t color, uint8_t id);
  *
  * @return      - 0x0000 A "blank" pixel, don't draw a pixel
  *              - 0xffff A "draw" pixel, draw pixel with the strings[id].color color
- *
  */
 uint16_t get_text_pixel(uint16_t x, uint8_t y, uint8_t id);
 uint16_t get_japanese_text_pixel(uint16_t x, uint8_t y, uint8_t id);
+
+/*
+ * @brtief Get the length of a text through the ID
+ * 
+ * @param id    - ID of the ui string
+ *
+ * @return      - The length of the string
+ *              - 0 if it doesn't exist
+ */
+uint8_t get_text_len(uint8_t id);
