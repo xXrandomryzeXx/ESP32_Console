@@ -40,6 +40,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text)
     
     strings[index].x = x;
     strings[index].y = y;
+    strings[index].layer = 0;   /* Default layer is 0 */
 
     strings[index].char_codes = malloc(TEXT_LENGTH);
     memset(strings[index].char_codes, 0, TEXT_LENGTH);
@@ -60,7 +61,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text)
     return index;
 }
 
-uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
+uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text)
 {
     /* find free index for the text */
     int index = -1;
@@ -77,9 +78,10 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
     
     japanese_strings[index].x = x;
     japanese_strings[index].y = y;
-    japanese_strings[index].len = len;
+    japanese_strings[index].layer = 0; /* Default layer is 0 */
 
-    japanese_strings[index].char_codes = calloc(len, len * sizeof(uint8_t));
+    japanese_strings[index].char_codes = malloc(TEXT_LENGTH*2);
+    memset(japanese_strings[index].char_codes, 0, TEXT_LENGTH*2);
     
     if(!japanese_strings[index].char_codes){
         free(japanese_strings[index].char_codes);
@@ -89,9 +91,10 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
     /* Convert text to "separate" chars.
      * Each japanese char from Katakana and Hiragana consist of 3 chars */
 
-    char *ch = malloc(3 * sizeof(char));
+    char *chars = malloc(3 * sizeof(char));
     uint8_t offset = 0;
-    for(int i = 0; i < len; ++i){
+    uint8_t length = 0;
+    for(int i = 0; text[i] != '\0' && i < TEXT_LENGTH*2; ++i){
         /* If we get a 1 byte char, the set an offset, and decrease i,
          * this way we only go 1 byte forward */
         switch(text[i*3 + offset]){
@@ -108,7 +111,7 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
         }
         /* Loop through 3 characters to get 1 japanese char */
         for(int j = 0; j < 3; ++j){
-            ch[j] = text[(i*3 + offset) + j];
+            chars[j] = text[(i*3 + offset) + j];
         }
         /* After getting the char, decide which alphabet
          * it is from */
@@ -119,10 +122,10 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
            /* Another for loop to compare the 3 chars of our current char
             * with the 3 chars of the array of chars we are looping through */
            for(int l = 0; l < 3; ++l){
-               if(ch[l] != kat[k][l]){
+               if(chars[l] != kat[k][l]){
                   kat_match = 0;
                }
-               if(ch[l] != hir[k][l]){
+               if(chars[l] != hir[k][l]){
                   hir_match = 0;
                }
            }
@@ -135,8 +138,9 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len)
             
         }
         japanese_strings[index].char_codes[i + offset] = code;
+        ++length;
     }
-
+    japanese_strings[index].len = (length/3) + offset;
     return index + 10;
 }
 
@@ -181,19 +185,36 @@ uint8_t delete_text(uint8_t id)
 
 uint8_t set_text_color(uint16_t color, uint8_t id)
 {
-    if(strings[id].len == 0)
-        return 0;
-
-    strings[id].color = color;
+    if(id < 10){
+        if(strings[id].len == 0){
+            return 0;
+        }
+        strings[id].color = color;
+    }else{
+        id = id - 10;
+        if(japanese_strings[id].len == 0){
+            return 0;
+        }
+        japanese_strings[id].color = color;
+    }
     return 1;
 }
 
-uint8_t set_japanese_text_color(uint16_t color, uint8_t id)
+uint8_t set_text_layer(uint8_t layer, uint8_t id)
 {
-    if(japanese_strings[id].len == 0)
-        return 0;
-    
-    strings[id].color = color;
+    if(id < 10){
+        if(strings[id].len == 0){
+            return 0;
+        }
+        strings[id].layer = layer;
+    }else{
+        id = id - 10;
+        if(japanese_strings[id].len == 0){
+            return 0;
+        }
+        japanese_strings[id].layer = layer;
+
+    }
     return 1;
 }
 
@@ -239,6 +260,12 @@ uint16_t get_japanese_text_pixel(uint16_t x, uint8_t y, uint8_t id)
 }
 
 uint8_t get_text_len(uint8_t id){
-    printf("Length of id %d is: %d\n", id, strings[id].len);
-    return strings[id].len;
+    uint8_t length;
+    if(id < 10){
+        length = strings[id].len;
+    }else{
+        length = japanese_strings[id-10].len;
+    }
+    printf("Length: %d\n", length);
+    return length;
 }

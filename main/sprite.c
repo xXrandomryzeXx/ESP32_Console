@@ -33,6 +33,7 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
             sprites[index].pixels = malloc(128*128*sizeof(uint16_t));
         }
         sprites[index].is_active = 1;
+        sprites[index].layer = 0; /* default layer is 0 */
 
         /* Load image from SD card */
 
@@ -45,6 +46,17 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
         s_load_image(path, &sprites[index].pixels, size);
     }
     return index;
+}
+
+void set_sprite_layer(uint8_t layer, uint8_t id)
+{
+    if(sprites[id].is_active){
+        if(layer > 4){
+            return;
+        }
+
+        sprites[id].layer = layer;
+    }
 }
 
 uint16_t get_sprite_pixel(uint16_t x, uint8_t y, uint8_t id)

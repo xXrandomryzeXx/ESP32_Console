@@ -23,7 +23,7 @@ esp_err_t spi_init()
     };
 
     spi_device_interface_config_t lcd_devconfig = {
-        .clock_speed_hz = 10 * 1000 * 1000,         // Clock out at 10MHz
+        .clock_speed_hz = 20 * 1000 * 1000,         // Clock out at 20MHz
         .mode = 0,                                  // SPI mode 0
         .spics_io_num = LCD_PIN_NUM_CS,
         .queue_size = 7,

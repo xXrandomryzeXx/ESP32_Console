@@ -16,6 +16,7 @@ struct ui_string{
     uint16_t x;
     uint8_t y;
     uint16_t color;
+    uint8_t layer;
 };
 
 /*
@@ -43,7 +44,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text);
  * @return      -  -1 Failed to allocate memory or there is no space in the array
  *              -  index + 10 Successfully created text
  */
-uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text, uint8_t len);
+uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text);
 
 void update_text(uint16_t x, uint8_t y, uint8_t id);
 /*
@@ -55,6 +56,7 @@ void update_text(uint16_t x, uint8_t y, uint8_t id);
  *              - 1 Successfulyl deleted text
  */
 uint8_t delete_text(uint8_t id);
+
 /*
  * @brief Set the color variable of a string with a given id/index
  *
@@ -65,8 +67,17 @@ uint8_t delete_text(uint8_t id);
  *              -  1 Color has been successfully set
  */
 uint8_t set_text_color(uint16_t color, uint8_t id);
-uint8_t set_japanese_text_color(uint16_t color, uint8_t id);
 
+/*
+ * @brief Set the layer variable of a string with a given id/index
+ *
+ * @param layer - The layer on which the string will be
+ *        id    - ID of the string (index in the strings array)
+ *
+ * @return      - 0 The string hasn't been created
+ *              - 1 The layer has been successfully set
+ */
+uint8_t set_text_layer(uint8_t layer, uint8_t id);
 /*
  * @breif Get a pixel value, if there should be a text pixel drawn or not, at given (x,y) coordinate
  *
