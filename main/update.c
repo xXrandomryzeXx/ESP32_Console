@@ -13,11 +13,11 @@
 
 /* IDs */
 uint8_t text_id[4];
-uint8_t kanji_sprite_id;
-uint8_t result_sprite_id;
-uint8_t result_text_id;
-int8_t corrects_text_id;
-int8_t lives_text_id;
+int8_t kanji_sprite_id = -1;
+int8_t result_sprite_id = -1;
+int8_t result_text_id = -1;
+int8_t corrects_text_id = -1;
+int8_t lives_text_id = - 1;
 
 uint8_t options[4];
 uint8_t initial = 1;
@@ -36,18 +36,18 @@ void Update()
     uint8_t input = getSelectedMenu();
 
     /* If input is not from the options, skip */
-    if(!options[input] && !initial)
+    if(!options[input] && !initial && (get_state() == Game || get_state() == MainMenu))
         return;
 
     /* Check inputs
      * Game logic goes in here */
     if(options[input] && !initial){
-        if(getState() == 1){ /* Main input */
+        if(get_state() == MainMenu){ /* Main input */
             if(input == 0){ /* Play button pressed */
-                setState(Game);
+                set_state(Game);
                 initial = 1;
             }
-        }else if(getState() == 2 && can_play){ /* Game logic */
+        }else if(get_state() == Game && can_play){ /* Game logic */
             /* Answer questions */
             if(input == q.answer){ /* The answer is correct */
                 printf("Correct answer!\n"); 
@@ -68,6 +68,7 @@ void Update()
                 }else{
                     xPos = xPos - (16 * get_text_len(result_text_id))/2;
                 }
+                printf("Result text id is %d\n", result_text_id);
                 update_text(xPos, yPos, result_text_id);
                 set_text_layer(1, result_text_id);
             }
@@ -82,7 +83,7 @@ void Update()
                     break;
             }
             set_sprite_layer(1, result_sprite_id);
-            setState(Generate);
+            set_state(Generate);
             ignoreInput();
             can_play = 0;
         }
@@ -91,7 +92,7 @@ void Update()
 
     /* This activates on state change
      * Load and set up the scenes */
-    if(getState() == 1){ /* Main input */
+    if(get_state() == MainMenu){ /* Main input */
         if(initial)
             initial = 0;
         /* Create options */
@@ -107,25 +108,46 @@ void Update()
         /* Create text for input options */
         text_id[0] = create_text(10, 100, "Play");
         text_id[3] = create_text(10, 170, "Quit");
-    }else if(getState() == 2){ /* Game state */
+
+        /* Load background image */
+        init_background_image_from_sd("/sdcard/bckg1.jpg");
+
+    }else if(get_state() == Game){ /* Game state */
         if(initial){
             initial = 0;
-            setState(Generate);
+            set_state(Generate);
             ignoreInput();
             return;
         }
 
-        if(answered){ 
+        if(answered){ /* Skip this update cycle if an answer has been given */
             answered = 0;
             return;
-        }else{
-            if(result_sprite_id){
+        }else{ /* Delete result sprite and text if they exist after an answer hasn't been given */
+            if(result_sprite_id >= 0){
                 delete_sprite(result_sprite_id);
+                result_sprite_id = -1;
             }
-            if(result_text_id){
+            if(result_text_id >= 0){
+                printf("Deleting result text id %d\n", result_text_id);
                 delete_text(result_text_id);
+                result_text_id = -1;
             }
         }
+        /* Delete text of number of correct answers */
+        if(corrects_text_id >= 0){
+            printf("deleting score text id %d\n", corrects_text_id);
+            delete_text(corrects_text_id);
+            corrects_text_id = -1;
+        }
+        
+        /* Delete text of number of lives */
+        if(lives_text_id >= 0){
+            printf("deleting lives text id %d\n", lives_text_id);
+            delete_text(lives_text_id);
+            lives_text_id = -1;
+        }
+       
 
         /* Reset options */
         for(int i = 0; i < 4; i++){
@@ -133,9 +155,19 @@ void Update()
             delete_text(text_id[i]); /* Delete all texts */
         }
 
-        /* Delete last sprite if it exists */
-        if(kanji_sprite_id){
+        /* Delete last kanji sprite if it exists */
+        if(kanji_sprite_id >= 0){
             delete_sprite(kanji_sprite_id);
+            kanji_sprite_id = -1;
+        }
+
+        /* After cleanup, check if the player has lost the game */
+        if(lives <= 0){
+            set_state(End);
+            ignoreInput();
+            initial = 1;
+            printf("Changing state\n");
+            return;
         }
 
         /* Change background */
@@ -146,10 +178,12 @@ void Update()
 
 
         /* Create the kanji sprite */
-        char *filename = malloc(14*sizeof(char));
-        sprintf(filename, "kanji/%d", q.index + 1);
-        kanji_sprite_id = create_sprite(filename, 128, 20, 1);
-        free(filename); 
+        if(kanji_sprite_id < 0){
+            char *filename = malloc(14*sizeof(char));
+            sprintf(filename, "kanji/%d", q.index + 1);
+            kanji_sprite_id = create_sprite(filename, 128, 20, 1);
+            free(filename); 
+        }
 
         /* Create answers text */
         for(int i = 0; i < 4; i++){
@@ -173,33 +207,45 @@ void Update()
 
             update_text(xPos, yPos, text_id[i]);
         }
-
-        printf("Corrects id: %d\n", corrects_text_id);
-        /* Create question number text */
-        if(corrects_text_id >= 0){
-            printf("deleting score\n");
-            delete_text(corrects_text_id);
-            corrects_text_id = -1;
-        }
+        
+        /* Create text for number of correct answers */
         if(corrects_text_id < 0){
-            printf("Creating score\n");
             char *string = malloc(14);
             memset(string, 0, 14);
             sprintf(string, "Correct:%d", correct_answers);
             corrects_text_id = create_text(10, 10, string);
+            printf("creating score text id %d\n", corrects_text_id);
+            free(string);
+        }
+        
+        /* Create text for number of lives */
+        if(lives_text_id < 0){
+            char *string = malloc(10);
+            memset(string, 0, 10);
+            sprintf(string, "Lives:%d", lives);
+            lives_text_id = create_text(250, 10, string);
+            printf("creating lives text id %d\n", lives_text_id);
             free(string);
         }
 
-
-        /* Create sprites for number of lives */
-
         can_play = 1;
 
-    } else if(getState() == 3) { /* Question generation */
+    } else if(get_state() == Generate) { /* Question generation */
         generateQuestion(&q);
-        setState(Game);
+        set_state(Game);
         ignoreInput();
         return;
+    } else if(get_state() == End) {  /* Game over screen */
+        if(initial){
+            initial = 0;
+            printf("End screen\n");
+            init_background_image_from_sd("/sdcard/gmovr.jpg");
+        }else{
+            printf("Going to main menu\n");
+            set_state(MainMenu);
+            ignoreInput();
+            initial = 1;
+        }
     }
     resetInput();
 }

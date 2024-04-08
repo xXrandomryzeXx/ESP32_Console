@@ -168,7 +168,7 @@ uint8_t delete_text(uint8_t id)
              strings[id].x = 0;
              strings[id].y = 0;
              strings[id].len = 0;
-             free(strings[id].char_codes);
+             //free(strings[id].char_codes);
              return 1;
         }
     }else{
@@ -177,7 +177,7 @@ uint8_t delete_text(uint8_t id)
              japanese_strings[id].x = 0;
              japanese_strings[id].x = 0;
              japanese_strings[id].len = 0;
-             free(japanese_strings[id].char_codes);
+             //free(japanese_strings[id].char_codes);
         }
     }
     return 0;

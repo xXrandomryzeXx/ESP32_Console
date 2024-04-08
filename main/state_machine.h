@@ -3,9 +3,10 @@ typedef enum STATE {
     MainMenu,
     Game,
     Generate,
+    End,
     Quit,
 }STATE;
 
-void setState(STATE newState);
-enum STATE getState();
+void set_state(STATE newState);
+enum STATE get_state();
 

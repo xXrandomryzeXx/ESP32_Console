@@ -4,13 +4,13 @@
 
 STATE currentState = Null;
 
-void setState(STATE newState)
+void set_state(STATE newState)
 {
     currentState = newState;
 }
 
 
-STATE getState()
+STATE get_state()
 {
     return currentState;
 }

@@ -56,7 +56,7 @@ uint8_t getSelectedMenu()
 
 void Start(){
     // Just in case, set state to Null
-    setState(Null);
+    set_state(Null);
 
     // Setup
     game = 1;
@@ -98,7 +98,7 @@ void Start(){
     display_lcd_prepare();
 
     // After the initial setup, state can be set to the main menu
-    setState(MainMenu);
+    set_state(MainMenu);
     sendInput();
     // Basic game loop
     while(game){
