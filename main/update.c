@@ -46,6 +46,11 @@ void Update()
             if(input == 0){ /* Play button pressed */
                 set_state(Game);
                 initial = 1;
+                can_play = 0;
+                answered = 0;
+                background_loaded = 0;
+                correct_answers = 0;
+                lives = 3;
             }
         }else if(get_state() == Game && can_play){ /* Game logic */
             /* Answer questions */
@@ -147,7 +152,6 @@ void Update()
             delete_text(lives_text_id);
             lives_text_id = -1;
         }
-       
 
         /* Reset options */
         for(int i = 0; i < 4; i++){
@@ -161,7 +165,9 @@ void Update()
             kanji_sprite_id = -1;
         }
 
-        /* After cleanup, check if the player has lost the game */
+        /* After cleanup, check if the player has lost the game 
+         * It's important that this is done before anything is created
+         * otherwise we can have a memory leak */
         if(lives <= 0){
             set_state(End);
             ignoreInput();
@@ -245,6 +251,7 @@ void Update()
             set_state(MainMenu);
             ignoreInput();
             initial = 1;
+            return;
         }
     }
     resetInput();

@@ -80,7 +80,6 @@ esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t 
         .indata = input_data,
         .indata_size = image_size,
         .outbuf = (uint8_t*)(*pixels),
-        /* .outbuf_size = IMAGE_W * IMAGE_H * sizeof(uint16_t), */
         .out_format = JPEG_IMAGE_FORMAT_RGB565,
         .flags = {
             .swap_color_bytes = 1,
@@ -96,8 +95,6 @@ esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t 
     } else if(size == 3){
         jpeg_cfg.outbuf_size = IMAGE_16 * IMAGE_16 * sizeof(uint16_t);
     } else if(size == 5){
-        printf("Trying to allocate %d of bytes\n", 128*128*2);
-        printf("Largest free memory block: %d\n", heap_caps_get_largest_free_block(MALLOC_CAP_8BIT));
         jpeg_cfg.outbuf_size = IMAGE_128 * IMAGE_128 * sizeof(uint16_t);
     }else/* if(size == 4)*/{
         jpeg_cfg.outbuf_size = IMAGE_8 * IMAGE_8 * sizeof(uint16_t);
@@ -107,7 +104,7 @@ esp_err_t decode_image_from_sd(uint16_t **pixels, uint8_t *input_data, uint32_t 
     esp_jpeg_image_output_t outimg;
     esp_jpeg_decode(&jpeg_cfg, &outimg);
 
-    /* Free the input data */
+    /* Avoid a memory leak */
     free(input_data);
 
     return ret;
