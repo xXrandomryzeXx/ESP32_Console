@@ -72,7 +72,9 @@ void get_screen_lines(uint16_t *dest, int line, int n)
 
 esp_err_t init_background_image(void)
 {
-    return decode_image(&pixels, 0);
+    pixels = malloc(320*240*2); /* Allocate enough memory for a full screen picture */
+    return ESP_OK;
+    //return decode_image(&pixels, 0);
 }
 
 esp_err_t init_background_image_from_sd(char* path)

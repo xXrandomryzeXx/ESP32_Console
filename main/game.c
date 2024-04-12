@@ -80,20 +80,6 @@ void Start(){
     // Setup the button's GPIO
     buttons_init();
 
-    //ret = init_background_image_from_sd();
-    //ESP_ERROR_CHECK(ret);
-   
-    // Unmount SD for safe turn off
-    //sd_unmount(); 
-
-    // Create a test text in english
-    //uint8_t hello_text = create_text(50, 50, "Hello World", 11);
-
-
-    // Create a test text in japanese (hiragana)
-    //uint8_t arr[9] = {20, 184, 44, 134, 48, 95, 128, 12, 105};
-    //uint8_t japanese_text = create_japanese_text(50, 100, arr, 9);
-    
     // Prepare the LCD for graphics input 
     display_lcd_prepare();
 

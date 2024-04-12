@@ -24,7 +24,7 @@ char* hir[85] = {
 "ゐ","ゑ","を","ん"," "
 };
 
-uint8_t create_text(uint16_t x, uint8_t y, char *text)
+int8_t create_text(uint16_t x, uint8_t y, char *text)
 {
     int index = -1;
     for(int i = 0; i < 10; i++)
@@ -49,6 +49,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text)
         free(strings[index].char_codes);
         return -1;  // Failed to allocate memory
     }
+
     char ch;
     uint8_t i;
     uint8_t length = 0;
@@ -61,7 +62,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text)
     return index;
 }
 
-uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text)
+int8_t create_japanese_text(uint16_t x, uint8_t y, char *text)
 {
     /* find free index for the text */
     int index = -1;
@@ -141,6 +142,7 @@ uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text)
         ++length;
     }
     japanese_strings[index].len = (length/3) + offset;
+    free(chars);
     return index + 10;
 }
 
@@ -158,7 +160,6 @@ void update_text(uint16_t x, uint8_t y, uint8_t id)
             japanese_strings[id].y = y;
         }
     }
-    
 }
 
 uint8_t delete_text(uint8_t id)
@@ -168,7 +169,7 @@ uint8_t delete_text(uint8_t id)
              strings[id].x = 0;
              strings[id].y = 0;
              strings[id].len = 0;
-             //free(strings[id].char_codes);
+             free(strings[id].char_codes);
              return 1;
         }
     }else{
@@ -177,7 +178,8 @@ uint8_t delete_text(uint8_t id)
              japanese_strings[id].x = 0;
              japanese_strings[id].x = 0;
              japanese_strings[id].len = 0;
-             //free(japanese_strings[id].char_codes);
+             free(japanese_strings[id].char_codes);
+             return 1;
         }
     }
     return 0;
@@ -266,6 +268,5 @@ uint8_t get_text_len(uint8_t id){
     }else{
         length = japanese_strings[id-10].len;
     }
-    printf("Length: %d\n", length);
     return length;
 }

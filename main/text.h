@@ -30,7 +30,7 @@ struct ui_string{
  * @return      -  -1 Failed to allocate memory or there is no space in the array
  *              -  index Successfully created text
  */
-uint8_t create_text(uint16_t x, uint8_t y, char *text);
+int8_t create_text(uint16_t x, uint8_t y, char *text);
 
 
 /*
@@ -44,7 +44,7 @@ uint8_t create_text(uint16_t x, uint8_t y, char *text);
  * @return      -  -1 Failed to allocate memory or there is no space in the array
  *              -  index + 10 Successfully created text
  */
-uint8_t create_japanese_text(uint16_t x, uint8_t y, char *text);
+int8_t create_japanese_text(uint16_t x, uint8_t y, char *text);
 
 void update_text(uint16_t x, uint8_t y, uint8_t id);
 /*

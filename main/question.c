@@ -8,10 +8,11 @@
 
 void generateQuestion(struct question *this_question)
 {
-    //this_question = malloc(sizeof(this_question));
-    // Allocate memory for the anwer strings
+    printf("Generating question!\n");
+    /* Allocate memory for the answer strings */
     for(int i = 0; i < 4; i++){
-        // This allocation shouldn't be freed because it's used by another code.
+        /* This allocation shouldn't be freed in the end because it's used by another code. */
+        free(this_question->answers[i]); /* free last answer */
         this_question->answers[i] = malloc(64*sizeof(char));
         memset(this_question->answers[i], 0, 64*sizeof(char));
     }

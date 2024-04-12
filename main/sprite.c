@@ -26,8 +26,19 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
             sprites[index].width = 64;
             sprites[index].height = 64;
             sprites[index].pixels = malloc(64*64*sizeof(uint16_t));
-        }
-        if(size == 5){
+        }else if(size == 2){
+            sprites[index].width = 32;
+            sprites[index].height = 32;
+            sprites[index].pixels = malloc(32*32*sizeof(uint16_t));
+        }else if(size == 3){
+            sprites[index].width = 16;
+            sprites[index].height = 16;
+            sprites[index].pixels = malloc(16*16*sizeof(uint16_t));
+        }else if(size == 4){
+            sprites[index].width = 8;
+            sprites[index].height = 8;
+            sprites[index].pixels = malloc(8*8*sizeof(uint16_t));
+        }else if(size == 5){
             sprites[index].width = 128;
             sprites[index].height = 128;
             sprites[index].pixels = malloc(128*128*sizeof(uint16_t));
@@ -35,15 +46,15 @@ uint8_t create_sprite(char* file_name, uint16_t x, uint8_t y, uint8_t size)
         sprites[index].is_active = 1;
         sprites[index].layer = 0; /* default layer is 0 */
 
-        /* Load image from SD card */
-
         /* Create path */
         char *path = malloc(strlen("/sdcard/") + strlen(file_name) + strlen(".jpg") + 1);
         strcpy(path, "/sdcard/");
         strcat(path, file_name);
         strcat(path, ".jpg");
 
+        /* Load image from SD card */
         s_load_image(path, &sprites[index].pixels, size);
+        free(path); /* Avoid memory leak */
     }
     return index;
 }

@@ -29,6 +29,6 @@ uint16_t getRandNum(uint16_t range)
 
         s_write_line(time_path, &line);
     }
-    //free(line);
+    free(line);
     return rand() % (int)range;
 }
