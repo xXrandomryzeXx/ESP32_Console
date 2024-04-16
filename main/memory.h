@@ -11,6 +11,7 @@
 
 static const char *kanji_path = MOUNT_POINT"/kanji.txt";
 static const char *time_path = MOUNT_POINT"/time.txt";
+static const char *score_path = MOUNT_POINT"/score.txt";
 
 esp_err_t sd_spi_init(spi_host_device_t spi_host, const uint8_t cs_pin);
 esp_err_t s_load_image(char *path, uint16_t **pixels, uint8_t size);

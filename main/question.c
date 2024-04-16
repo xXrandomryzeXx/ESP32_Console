@@ -27,7 +27,12 @@ void generateQuestion(struct question *this_question)
 
     all = atoi(line);  // Convert string to int
 
-    this_question->index = getRandNum(all);
+    /* Get index that is different from the last question */
+    uint16_t new_index;
+    while((new_index = getRandNum(all)) == this_question->index)
+        ;
+
+    this_question->index = new_index;
 
     // Has to be +2 and not +1 because of the first line in the file
     // The line of the kanji number
@@ -67,8 +72,9 @@ void generateQuestion(struct question *this_question)
         indexes[i] = index;
     }
 
-    // Get values for the answers
-    for(uint8_t i = 0; i < 4; i++){
+    // Get values for the answers 
+    for(uint8_t i = 0; i < 4; ++i){
+        uint8_t n = 0;
         s_read_line(kanji_path, &line, indexes[i] + 1*this_question->type );
         
         // Split answers by the ',' symbol and select one at random
@@ -76,12 +82,13 @@ void generateQuestion(struct question *this_question)
         uint8_t end = 0;
         uint8_t ite = 0;
 
-        for(uint8_t j = 3; j < 64; j++){
+        for(uint8_t j = 3; j < 64; ++j){
             if(ite >= 4)
                 break;
             if(line[j] == ','){
                 answer_line_array[ite][end] = '\0';
-                ite++;
+                ++ite;
+                ++n;
                 end = 0;
                 continue;
             }
@@ -92,7 +99,10 @@ void generateQuestion(struct question *this_question)
             answer_line_array[ite][end] = line[j];
             end++;
         }
-        strcpy(this_question->answers[i], answer_line_array[0]);
+        strcpy(this_question->answers[i], answer_line_array[getRandNum(n)]);
+        for(uint8_t k = 0; k < 4; ++k){
+            memset(answer_line_array[k], 0, 64);
+        }
     } 
     
     free(line);

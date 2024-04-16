@@ -2,7 +2,7 @@
 1
 On ニチ,ジツ
 Ku ひ,び,か
-Me day,sun,Japan,counter_for_days
+Me day,sun,Japan
 2
 On イチ
 Ku ひと(つ)
@@ -18,7 +18,7 @@ Me person
 5
 On ネン
 Ku とし
-Me year,counter_for_years
+Me year
 6
 On ダイ,タイ
 Ku おお(きい)
@@ -34,7 +34,7 @@ Me two
 9
 On ホン
 Ku もと
-Me book,present,true,countrer_for_long_cylindrical_things
+Me book,present,true
 10
 On チュウ
 Ku なか,うち,あた(る)

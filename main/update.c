@@ -10,6 +10,7 @@
 #include "question.h"
 #include "esp_heap_caps.h"
 #include "rand.h"
+#include "memory.h"
 
 #define TEXT_PADDING 20
 
@@ -33,6 +34,7 @@ int8_t answered = 0;
 uint8_t background_loaded = 0;
 uint8_t correct_answers = 0;
 uint8_t lives = 3;
+uint8_t highscore = 0;
 
 uint8_t once = 1;
 
@@ -114,7 +116,7 @@ void Update()
         }
 
         /* Testing question generation for memory leak */
-        generateQuestion(&q);
+        //generateQuestion(&q);
 
         /* Testing rand function for memory leak */
         //getRandNum(5);
@@ -130,6 +132,22 @@ void Update()
         /* Create text for input options */
         text_id[0] = create_text(10, 100, "Play");
         text_id[2] = create_text(10, 170, "Quit");
+
+        /* Load high score from SD */
+        highscore = 0;
+        char* data = malloc(4);
+        esp_err_t ret = s_read_line(score_path, &data, 0);
+
+        if(ret == ESP_OK){
+            /* Convert  string to int */
+            highscore = atoi(data);
+
+            /* Create text for high score */
+            char* score_string = malloc(16);
+            sprintf(score_string, "Highscore: %d", highscore);
+            text_id[1] = create_text(10, 60, score_string);
+            free(score_string);
+        }
 
         /* Create test sprite */
         //create_sprite("kanji/1", 0, 0, 1);
@@ -237,6 +255,14 @@ void Update()
             uint16_t xPos = 160 - (8 * get_text_len(final_result_text_id));
             update_text(xPos, 140, final_result_text_id);
             free(string);
+
+            if(correct_answers > highscore){
+                char* new_data = malloc(5);
+                sprintf(new_data, "%d", correct_answers);
+                s_write_line(score_path, &new_data);
+            }else{
+                printf("%d is less than or equal to %d\n", correct_answers, highscore);
+            }
 
         }else{
             /* Delete final result text */

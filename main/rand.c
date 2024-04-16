@@ -8,6 +8,8 @@
 
 uint16_t getRandNum(uint16_t range)
 {
+    if(!range)
+        return 0;
     // Get total seconds
     char *line = malloc(64*sizeof(char));
     esp_err_t ret = s_read_line(time_path, &line, 0);
