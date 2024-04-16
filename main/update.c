@@ -115,23 +115,13 @@ void Update()
             delete_text(text_id[i]);
         }
 
-        /* Testing question generation for memory leak */
-        //generateQuestion(&q);
-
-        /* Testing rand function for memory leak */
-        //getRandNum(5);
-
-        /* Delete test sprite */
-        //delete_sprite(0);
-
-
         /* Create options */
         options[0] = 1; /* Play */
-        options[2] = 1; /* Quit */
+        /*options[2]*/ = 1; /* Quit */
 
         /* Create text for input options */
         text_id[0] = create_text(10, 100, "Play");
-        text_id[2] = create_text(10, 170, "Quit");
+        /*text_id[2] = create_text(10, 170, "Quit");*/
 
         /* Load high score from SD */
         highscore = 0;
