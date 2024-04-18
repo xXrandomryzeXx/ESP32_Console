@@ -64,7 +64,7 @@ void Start(){
     esp_err_t ret;
 
     // Load background image from ROM, for memory allocation mainly
-    ret = init_background_image();
+    ret = malloc_background();
     ESP_ERROR_CHECK(ret);
 
     // Initialize the spi bus

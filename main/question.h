@@ -9,4 +9,9 @@ struct question{
     char *answers[4];
 };
 
+/*
+ * @brief Generate a question from the available kanji in the kanji.txt
+ *
+ * @param this_question - A pointer to a struct variable which will store the generated question
+ */
 void generateQuestion(struct question *this_question);

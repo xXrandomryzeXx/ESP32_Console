@@ -16,4 +16,10 @@
 // SD LINES
 #define SD_PIN_NUM_CS       15
 
+/*
+ * @brief Initialize all SPI connections
+ *
+ * @return      - ESP_OK Everything was successful
+ *              - ESP_FAIL or else Initialization of some device failed
+ */
 esp_err_t spi_init();

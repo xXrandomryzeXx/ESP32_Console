@@ -62,11 +62,11 @@ esp_err_t s_read_line(const char *path, char **data, uint16_t line)
     }
 
     uint16_t current_line = 0;
-    char *line_data = malloc(64 * sizeof(char));
+    char *line_data = malloc(MAX_CHAR_SIZE * sizeof(char));
     void* result = NULL;
 
     while(current_line <= line){
-        result = fgets(line_data, 64, f);
+        result = fgets(line_data, MAX_CHAR_SIZE, f);
         current_line++;
     }
 

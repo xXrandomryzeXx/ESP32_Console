@@ -20,7 +20,7 @@ struct ui_string{
 };
 
 /*
- * @bried Find a free space in the strings array, and create a new text there
+ * @brief Find a free space in the strings array, and create a new text there
  *
  * @param x     - X position, where to draw the top left position of the text
  *        y     - Y position, where to draw the top left position of the text
@@ -34,7 +34,7 @@ int8_t create_text(uint16_t x, uint8_t y, char *text);
 
 
 /*
- * @bried Find a free space in the japanese strings array, and create a new text there
+ * @brief Find a free space in the japanese strings array, and create a new text there
  *
  * @param x     - X position, where to draw the top left position of the text
  *        y     - Y position, where to draw the top left position of the text
@@ -45,8 +45,8 @@ int8_t create_text(uint16_t x, uint8_t y, char *text);
  *              -  index + 10 Successfully created text
  */
 int8_t create_japanese_text(uint16_t x, uint8_t y, char *text);
-
 void update_text(uint16_t x, uint8_t y, uint8_t id);
+
 /*
  * @brief Find and delete the text of the given id
  *

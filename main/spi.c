@@ -35,7 +35,6 @@ esp_err_t spi_init()
     ret = spi_bus_initialize(SPI_HOST_INSTANCE, &buscfg, SPI_DMA_CH_AUTO);
     ESP_ERROR_CHECK(ret);
 
-    
     ret = sd_spi_init(SPI_HOST_INSTANCE, SD_PIN_NUM_CS);
     
     if(ret != ESP_OK){

@@ -117,7 +117,7 @@ void Update()
 
         /* Create options */
         options[0] = 1; /* Play */
-        /*options[2]*/ = 1; /* Quit */
+        /*options[2] = 1;  Quit */
 
         /* Create text for input options */
         text_id[0] = create_text(10, 100, "Play");
@@ -269,11 +269,9 @@ void Update()
 
 int8_t cleanup()
 {
-    printf("Total memory before cleanup %d\n", heap_caps_get_free_size(MALLOC_CAP_8BIT));
     if(answered){ /* Skip this update cycle if an answer has been given */
         answered = 0;
         can_play = 0;
-        printf("Wont delete result sprite\n");
         return -1;
     }else{ /* Delete result sprite and text if they exist after an answer hasn't been given */
         if(result_sprite_id >= 0){
@@ -308,7 +306,5 @@ int8_t cleanup()
         delete_sprite(kanji_sprite_id);
         kanji_sprite_id = -1;
     }
-
-    printf("Total memory after cleanup %d\n", heap_caps_get_free_size(MALLOC_CAP_8BIT));
     return 0;
 }
