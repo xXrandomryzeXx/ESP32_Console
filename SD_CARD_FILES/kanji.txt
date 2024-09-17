@@ -1,0 +1,41 @@
+10
+1
+On ニチ,ジツ
+Ku ひ,び,か
+Me day,sun,Japan
+2
+On イチ
+Ku ひと(つ)
+Me one
+3
+On コク
+Ku くに
+Me country
+4
+On ジン,ニン
+Ku ひと
+Me person
+5
+On ネン
+Ku とし
+Me year
+6
+On ダイ,タイ
+Ku おお(きい)
+Me large,big
+7
+On ジュウ
+Ku とお,と
+Me ten
+8
+On ニ,ジ
+Ku ふた(つ)
+Me two
+9
+On ホン
+Ku もと
+Me book,present,true
+10
+On チュウ
+Ku なか,うち,あた(る)
+Me in,inside,middle,mean,center

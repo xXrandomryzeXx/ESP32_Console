@@ -117,9 +117,13 @@ esp_err_t s_load_image(char *path, uint16_t **pixels, uint8_t size)
     uint32_t img_size = ftell(img);
     fseek(img, 0, SEEK_SET);
 
+    ESP_LOGI(TAG, "Image size: %ld", img_size);
+
     // Create pointer to store the data from the file
     uint8_t *read_pixels = malloc(img_size * sizeof(uint8_t));
+    ESP_LOGI(TAG, "Performing fread()");
     fread(read_pixels, img_size, 1, img);
+    ESP_LOGI(TAG, "fread() complete");
     fclose(img);
 
     ESP_LOGI(TAG, "Decoding image");
