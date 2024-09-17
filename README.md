@@ -53,3 +53,19 @@ When attaching the components you have to match their orientation with the text 
 The populated PCB should look like this
 
 <img src="/assets/FrontPCB.jpg" width="400"><img src="/assets/BackPCB.jpg" width="400">   
+
+## Possible improvements
+As this was the first time I ever made something involving a Custom PCB and so many components, I have missed to think about
+certain things that could prove beneficial for future projects.
+
+### Cleaner PCB
+For a first time design I feel like this one is OK, but for future projects the design should incorporate less prototyping boards and more individual components, like SMD components. These may require more complicated soldering methods but the final product would have a much more professional and clean look.  
+Major imporvement would be the use of an independent ESP32 chip that has been flashed with the project.
+Another big improvement would be from the TFT display. Instead of using one with a board and pins, an alternative variant that utilises a connector would be better in terms of how thin the console could be.
+
+### Better software
+This was also my first time programming on an ESP32 and ESP-IDF, so a lot was figured out through the exampled given by Espressif, but the code was not well suited for this project.  
+The most improvement that could be done is in the rendering, because the current rendering method is so slow that the FPS is lower than 1, but it can most certainly be at least as good as 10FPS.
+
+### Mounting holes
+Mounting holes designed into the PCB could allow for a case to be made for the console, giving it a more solid look and making it a lot more comfortable and safer than the current one, where you hold the PCB and have to take care of what touches the board.
