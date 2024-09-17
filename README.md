@@ -32,8 +32,8 @@ This will
 As I was not developing this on Windows, I don't know how the setup would go for it.
 
 ## About
-The project was developt as a final assigment for high school. It utilizes the ESP32 to make a console-like game for learning Japanese Kanji.
-It consists of multiple components
+The project was developed as a final assigment for high school. It utilizes the ESP32 to make a console-like game for learning Japanese Kanji.
+It consists of multiple components:
 1. Custom PCB
 2. Node MCU32S board
 3. 3.2 Inch TFT SPI Display board
@@ -42,3 +42,14 @@ It consists of multiple components
 6. 4x 10K resistor
 7. Power Swtich
 8. Battery box for 3 AAA 1.5V batteries
+
+## The PCB Board
+The board is two sided THT. Each component is labeled where it's supposed to be soldered on the board.  
+The clean board looks like this  
+
+<img src="/assets/CleanFrontPCB.jpg" width="400"><img src="/assets/CleanBackPCB.jpg" width="400">   
+
+When attaching the components you have to match their orientation with the text on the silkscreen.  
+The populated PCB should look like this
+
+<img src="/assets/FrontPCB.jpg" width="400"><img src="/assets/BackPCB.jpg" width="400">   
