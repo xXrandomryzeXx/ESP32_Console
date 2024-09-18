@@ -90,7 +90,7 @@ certain things that could prove beneficial for future projects.
 ### Cleaner PCB
 For a first time design I feel like this one is OK, but for future projects the design should incorporate less prototyping boards and more individual components, like SMD components. These may require more complicated soldering methods but the final product would have a much more professional and clean look.  
 Major imporvement would be the use of an independent ESP32 chip that has been flashed with the project.
-Another big improvement would be from the TFT display. Instead of using one with a board and pins, an alternative variant that utilises a connector would be better in terms of how thin the console could be.
+Another big improvement would come from the TFT display. Instead of using one with a board and pins, an alternative variant that utilises a connector would be better in terms of how thin the console could be.
 
 ### Better software
 This was also my first time programming on an ESP32 and ESP-IDF, so a lot was figured out through the exampled given by Espressif, but the code was not well suited for this project.  
