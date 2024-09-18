@@ -93,7 +93,7 @@ Major imporvement would be the use of an independent ESP32 chip that has been fl
 Another big improvement would come from the TFT display. Instead of using one with a board and pins, an alternative variant that utilises a connector would be better in terms of how thin the console could be.
 
 ### Better software
-This was also my first time programming on an ESP32 and ESP-IDF, so a lot was figured out through the exampled given by Espressif, but the code was not well suited for this project.  
+This was also my first time programming on an ESP32 and ESP-IDF, so a lot was figured out through the examples given by Espressif, but the code was not well suited for this project.  
 The most improvement that could be done is in the rendering, because the current rendering method is so slow that the FPS is lower than 1, but it can most certainly be at least as good as 10FPS.
 
 ### Mounting holes
