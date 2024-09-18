@@ -56,27 +56,33 @@ The populated PCB should look like this
 
 ## Game Demonstration
 When the console is turned on by the switch in the middle, it will light up and the main menu will show up.  
-It displays the Highest achieved score that is saved to the Micro SD Card and also a choice to start a game.
+It displays the Highest achieved score that is saved to the Micro SD Card and also a choice to start a game.  
+
 <img src="/assets/MainMenu.jpg" width="400">  
 
 When you press the corresponding button to the **play** option a new game will begin.  
-A question will be generated and the answers selectedd. They will either ask for a   
-translation of the kanji displayed or for a reading in japanese.
+A question will be generated and the answers selectedd. They will either ask for a  
+translation of the kanji displayed or for a reading in japanese.  
+
 <img src="/assets/Question.jpg" width="400">  
 
 If the chosen answer is wrong the game will deduct one life point and will display the  
-correct answer for the question.
+correct answer for the question.  
+
 <img src="/assets/QuestionWrong.jpg" width="400">  
 
 Otherwise if the chosen aswer is correct, the game will give 1 point and notify the player  
 that the chose answer has been correct.  
+
 <img src="/assets/QuestionCorrect.jpg" width="400">
 
 The game will end once the player has ran out of lives, there is no way to end a game without
 losing unless you power off the console. At the end of a game, the player will be notified
 about the score they managed to get. If the score is more than the recorded high score, it will  
-be saved as the new highest score.
+be saved as the new highest score.  
+
 <img src="/assets/GameOver.jpg" width="400">
+
 ## Possible improvements
 As this was the first time I ever made something involving a Custom PCB and so many components, I have missed to think about
 certain things that could prove beneficial for future projects.
